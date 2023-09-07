@@ -1,6 +1,9 @@
 import React from 'react'
 import LoginArea from '@/components/page/login/LoginArea'
 import SnsLogin from '@/components/page/login/SnsLogin'
+import { options } from '@/app/api/auth/[...nextauth]/options'
+import { getServerSession } from 'next-auth'
+import { redirect } from "next/navigation";
 
 
 
@@ -12,6 +15,11 @@ export const metadata = {
 
 export default async function LoginPage() {
 
+  const session = await getServerSession(options)
+
+  if (session !== null) {
+    redirect('/')
+  }
 
 
   return (

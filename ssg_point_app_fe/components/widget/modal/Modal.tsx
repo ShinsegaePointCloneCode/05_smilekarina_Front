@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type PublicModalProps = {
     isOpen: boolean;
@@ -11,7 +11,7 @@ type PublicModalProps = {
 
 export default function PublicModal({ isOpen, onOpenChange, content, routePath }: PublicModalProps) {
     const router = useRouter();
-
+    const pathname = usePathname();
     return (
         <>
             
@@ -37,6 +37,9 @@ export default function PublicModal({ isOpen, onOpenChange, content, routePath }
                                                                         }}}>
                                     확인
                                 </Button>
+                                {pathname === "/withdrawal/leaveOnline" && (
+                                    <Button onPress={onClose}>취소</Button>
+                                )}
                                 
                             </ModalFooter>
                         </>

@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './Step.module.css';
 import { usePathname } from 'next/navigation';
 
-export default function Step(props: { step: number, title: string, description?: string }) {
+export default function Step(props: { step: number, title: string, description?: string, loginId?: string, name?: string }) {
 
     const pathname = usePathname();
 
@@ -24,6 +24,9 @@ export default function Step(props: { step: number, title: string, description?:
             stepStyle = styles.step4;
     }
 
+    const maskSecondCharacter = (str: string) => {
+        return str[0] + '*' + str.slice(2);
+    }
 
     return (
         <div><section id="content" className={styles.content} >
@@ -49,12 +52,13 @@ export default function Step(props: { step: number, title: string, description?:
                     </ol>
                     <p className={styles.tit}>{props.title}</p>
                     <p className={styles.txt}>{props.description}</p>
+
                     {pathname === '/member/join/success'
                         ?
                         <div>
                             <p className="sp_tit1">
-                                <strong className="txt_line0">박*우</strong> 님,
-                                <span className="user_underline">pgw7120 ID</span>로
+                                <strong className="txt_line0">{props.name && maskSecondCharacter(props.name)}</strong> 님,
+                                <span className="user_underline"> {props.loginId} ID</span>로
                                 <br />신세계포인트
                                 <strong className="fw500"> 통합 회원 가입</strong>이
                                 <br />
@@ -62,7 +66,6 @@ export default function Step(props: { step: number, title: string, description?:
                             </p>
                         </div>
                         : null
-
                     }
                 </div>
             </div>

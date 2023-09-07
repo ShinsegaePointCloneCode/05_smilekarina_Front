@@ -5,23 +5,27 @@ import styles from './FormArea.module.css'
 import { SignUpFormDataType } from '@/types/userDataType'
 import { useRouter } from 'next/navigation';
 import PublicModal from '@/components/widget/modal/Modal';
-import { Button, useDisclosure } from "@nextui-org/react";
-
-
+import { useDisclosure } from "@nextui-org/react";
+import { DaumAddressType } from '@/types/DaumAddressType';
+import PostCodeDaum from '@/components/widget/post/PostCodeDaum';
 
 
 export default function FormArea() {
+
     const isClient = typeof window !== 'undefined';
     const router = useRouter();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [modalContent, setModalContent] = useState<string>("");
-
+    const [isView, setIsView] = useState<boolean>(false);
+    const [address, setAddress] = useState<DaumAddressType>();
     const [signupData, setSignupData] = useState<SignUpFormDataType>({
         loginId: '',
         password: '',
         name: '',
         phone: '',
+        zoneCode: '',
         address: '',
+        detailAddress: '',
         agree1: false,
         agree2: false,
         agree3: false,
@@ -45,9 +49,25 @@ export default function FormArea() {
         }
     }
 
-
-
     const handleSignUp = async () => {
+        
+        const {
+            loginId,
+            name: userName,
+            password,
+            phone,
+            address,
+            detailAddress,
+            agree1: optionOne,
+            agree2: optionTwo,
+            agree3: agreeEmail,
+            agree4: letter,
+            agree5: dm,
+            agree6: tm
+        } = signupData;
+
+        const fullAddress = address + "," + detailAddress;
+
         try {
             const response = await fetch('https://smilekarina.duckdns.org/api/v1/user/join/cert', {
                 method: 'POST',
@@ -55,29 +75,35 @@ export default function FormArea() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    userSignUpIn:
-                    {
-                        loginId: signupData.loginId,
-                        userName: signupData.name,
+                    userSignUpIn: {
+                        loginId,
+                        userName,
                         email: "",
-                        password: signupData.password,
-                        phone: signupData.phone,
-                        address: signupData.address
+                        password,
+                        phone,
+                        address: fullAddress
                     },
-                    agreeAdvertiseIn:
-                    {
-                        optionOne: signupData.agree1,
-                        optionTwo: signupData.agree2,
-                        agreeEmail: signupData.agree3,
-                        letter: signupData.agree4,
-                        dm: signupData.agree5,
-                        tm: signupData.agree6
+                    agreeAdvertiseIn: {
+                        optionOne,
+                        optionTwo,
+                        agreeEmail,
+                        letter,
+                        dm,
+                        tm
                     }
-
                 })
-            }).then(res => res.json())
-                .then(data => console.log(data))
-                .catch(err => console.log(err))
+            })
+            const data = await response.json();
+            if (response){
+                console.log(data.result);
+                localStorage.setItem('tempLoginId', data.result.loginId.toString());
+                localStorage.setItem('tempAddress', data.result.address.toString());
+                localStorage.setItem('tempEmail', data.result.email.toString());
+                localStorage.setItem('tempAgreeEmail', data.result.agreeEmail.toString());
+                localStorage.setItem('tempLetter', data.result.letter.toString());
+                localStorage.setItem('tempDm', data.result.dm.toString());
+                localStorage.setItem('tempTm', data.result.tm.toString());
+            }
         } catch (error) {
             console.error("Error sending POST request:", error);
         }
@@ -103,15 +129,33 @@ export default function FormArea() {
         onOpen();
     }
 
+    const handleAllCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { checked } = e.target;
+        setSignupData(prevData => ({
+            ...prevData,
+            agree3: checked,
+            agree4: checked,
+            agree5: checked,
+            agree6: checked
+        }));
+    }
+
+    const isAllChecked = (): boolean => {
+        return !!signupData.agree3 && !!signupData.agree4 && !!signupData.agree5 && !!signupData.agree6;
+    }
+    
+
     useEffect(() => {
+        // Logic for the first useEffect
         const tempName = isClient && localStorage.getItem('tempName');
         const tempPhone = isClient && localStorage.getItem('tempPhone');
         const tempagree1 = isClient && localStorage.getItem('tempagree1') === 'true';
         const tempagree2 = isClient && localStorage.getItem('tempagree2') === 'true';
-        const tempagree3 = isClient && localStorage.getItem('tempagree2') === 'true';
-        const tempagree4 = isClient && localStorage.getItem('tempagree2') === 'true';
-        const tempagree5 = isClient && localStorage.getItem('tempagree2') === 'true';
-        const tempagree6 = isClient && localStorage.getItem('tempagree2') === 'true';
+        const tempagree3 = isClient && localStorage.getItem('tempagree3') === 'true';
+        const tempagree4 = isClient && localStorage.getItem('tempagree4') === 'true';
+        const tempagree5 = isClient && localStorage.getItem('tempagree5') === 'true';
+        const tempagree6 = isClient && localStorage.getItem('tempagree6') === 'true';
+
         if (tempName && tempPhone) {
             setSignupData({
                 ...signupData,
@@ -128,10 +172,22 @@ export default function FormArea() {
             agree5: tempagree5,
             agree6: tempagree6
         }));
-    }, [])
+
+        // Logic for the second useEffect
+        if (address) {
+            
+            setSignupData({
+                ...signupData,
+                zoneCode: address.zonecode,
+                address: address.address,
+            });
+        }
+    }, [address]);
+
 
     return (
         <div>
+            <p></p>
             <div>
                 <div>
                     <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} />
@@ -187,23 +243,18 @@ export default function FormArea() {
                     <div className={styles.input_address_box}>
                         <div className={`${styles.input_btn_box} ${styles.w_type2}`}>
                             <div className={styles.input_box}>
-                                <input type="text" id="address00" readOnly />
-                                <label htmlFor="address00" className="">
-                                    <span className={styles.in_box}>우편번호</span>
-                                </label>
+                                <input type="text" id="zoneCode" name='zoneCode' value={signupData.zoneCode.toString()} readOnly placeholder='우편번호' />
                             </div>
                             <div className={styles.btn_box}>
-                                <button className={styles.btn2}> 우편번호 찾기 </button>
+                                <div className={styles.btn2}> 
+                                <PostCodeDaum isView={isView} setIsView={setIsView} setAddress={setAddress} /></div>
                             </div>
                         </div>
                         <div className={`${styles.input_box} mb-2`}>
-                            <input type="text" id="address01" readOnly />
-                            <label htmlFor="address01" className={styles.hide}>
-                                <span className={styles.in_box}>주소</span>
-                            </label>
+                            <input type="text" id="address" name='address' value={signupData.address.toString()} readOnly placeholder='주소' />
                         </div>
                         <div className={styles.input_box} >
-                            <input type="text" id="address02" name='address' placeholder='상세주소' onChange={handleOnChange} />
+                            <input type="text" id="detailAddress" name='detailAddress' placeholder='상세주소' onChange={handleOnChange} />
                         </div>
                     </div>
                 </div>
@@ -229,7 +280,7 @@ export default function FormArea() {
                     <div className={styles.agree_sub_box}>
                         <p className={styles.add_info_agree_tit}> 신세계포인트 광고정보 수신동의 </p>
                         <div className={`${styles.chk_box} ${styles.simple}`}>
-                            <input id="receiveAllspoint" type="checkbox" value="0" />
+                        <input id="receiveAllspoint" type="checkbox" value="0" checked={isAllChecked()} onChange={handleAllCheck} />
                             <label htmlFor="receiveAllspoint">전체동의</label>
                         </div>
                         <div className={`${styles.chk_group_box} ${styles.col_f}`}>
@@ -264,13 +315,7 @@ export default function FormArea() {
                 <div className={styles.btn_box}>
                     <button className={styles.btn_primary}
                         onClick={() => {
-                            console.log(
-                                signupData.loginId, signupData.password, signupData.name,
-                                signupData.phone, signupData.address,
-                                signupData.agree1, signupData.agree2,
-                                signupData.agree3, signupData.agree4,
-                                signupData.agree5, signupData.agree6,
-                            );
+                            
                             handleSignUp();
                             router.push('/member/join/success')
                         }}>확인</button>

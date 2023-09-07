@@ -73,7 +73,7 @@ export const memberMenuData: MenuType[] = [
     {
         id: 5,
         name: "회원 탈퇴",
-        url: "/withdrawal/leavePassword"
+        url: ["/withdrawal/leavePassword", "/withdrawal/leaveUsingService", "/withdrawal/leaveOnline"]
     }
 
 ];

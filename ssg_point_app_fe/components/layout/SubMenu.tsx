@@ -14,7 +14,8 @@ const menuDataMapping: {
   event: eventMenuData,
   myinfo: memberMenuData,
   mypage: mypageMenuData,
-  mylounge: myloungeMenuData
+  mylounge: myloungeMenuData,
+  
   // 다른 pathname을 추가하려면 여기에 추가하세요.
   // 예: anotherPath: anotherMenuData
 };
