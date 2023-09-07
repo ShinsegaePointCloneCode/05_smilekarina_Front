@@ -353,3 +353,14 @@
 .input_box input.readonly_bg:read-only+label,.input_box input.readonly_bg:read-only~label,.input_box input:disabled+label {
     visibility: hidden
 }
+.list_cnt li:before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 20px;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 700;
+}
+

@@ -1,7 +1,52 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import styles from './Callinfo.module.css'
+import Link from 'next/link'
+
+export interface agreeList {
+    agree1: Boolean,
+    agree2: Boolean,
+    agree3: Boolean,
+    agree4: Boolean,
+    agree5: Boolean,
+    agree6: Boolean,
+}
 
 export default function Callinfo() {
+    const [agreeList, setAgreeList] = useState<agreeList>({
+        agree1: false,
+        agree2: false,
+        agree3: false,
+        agree4: false,
+        agree5: false,
+        agree6: false,
+    })
+
+    const handleAllCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { checked } = e.target;
+        setAgreeList(prevData => ({
+            ...prevData,
+            agree3: checked,
+            agree4: checked,
+            agree5: checked,
+            agree6: checked
+        }));
+    }
+
+    const isAllChecked = (): boolean => {
+        return !!agreeList.agree3 && !!agreeList.agree4 && !!agreeList.agree5 && !!agreeList.agree6;
+    }
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, type, checked } = e.target;
+        if (type === "checkbox") {
+            setAgreeList({
+                ...agreeList,
+                [name]: checked
+            });
+        } 
+    }
+    
     return (
         <div>
             <div className={`${styles.user_info_cnt} ${styles.bg_w}}`}>
@@ -30,7 +75,7 @@ export default function Callinfo() {
                 </p>
                 <div className={`${styles.btn_box}`}>
                 </div>
-                <a href="" className={`${styles.btn_arrow}`}>회원정보 수정</a>
+                <Link href="/myinfo/cert" className={`${styles.btn_arrow}`}>회원정보 수정</Link>
             </div>
 
             <div className={styles.terms_agree_box}>
@@ -38,14 +83,14 @@ export default function Callinfo() {
                     <ul className={`${styles.agree_list} ${styles.btn_type0} ${styles.txt_type0}`}>
                         <li className={`${styles.agree_form} ${styles.join_agree}`}>
                             <div className={styles.chk_box}>
-                                {/* <input type="checkbox" id="terms0" name='agree1' checked={!!signupData.agree1} onChange={handleOnChange} /> */}
+                                <input type="checkbox" id="terms0" name='agree1' checked={!!agreeList.agree1} onChange={handleOnChange} />
                                 <label htmlFor="terms0">[선택] 혜택제공 및 분석을 위한 개인정보 수집 및 이용 동의</label>
                             </div>
                             <button className={styles.agree_show}><span>내용보기</span></button>
                         </li>
                         <li className={`${styles.agree_form} ${styles.join_agree}`}>
                             <div className={styles.chk_box}>
-                                {/* <input type="checkbox" id="terms1" name='agree2' checked={!!signupData.agree2} onChange={handleOnChange} /> */}
+                                <input type="checkbox" id="terms1" name='agree2' checked={!!agreeList.agree2} onChange={handleOnChange} />
                                 <label htmlFor="terms1">[선택] 이마트/신세계 공동 개인정보 수집 및 이용 동의</label>
                             </div>
                             <button className={styles.agree_show}><span>내용보기</span></button>
@@ -54,24 +99,24 @@ export default function Callinfo() {
                     <div className={styles.agree_sub_box}>
                         <p className={styles.add_info_agree_tit}> 신세계포인트 광고정보 수신동의 </p>
                         <div className={`${styles.chk_box} ${styles.simple}`}>
-                            <input id="receiveAllspoint" type="checkbox" value="0" />
+                        <input id="receiveAllspoint" type="checkbox" value="0" checked={isAllChecked()} onChange={handleAllCheck} />
                             <label htmlFor="receiveAllspoint">전체동의</label>
                         </div>
                         <div className={`${styles.chk_group_box} ${styles.col_f}`}>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                {/* <input id="receivespoint0" type="checkbox" name='agree3' checked={!!signupData.agree3} onChange={handleOnChange} /> */}
+                                <input id="receivespoint0" type="checkbox" name='agree3' checked={!!agreeList.agree3} onChange={handleOnChange} />
                                 <label htmlFor="receivespoint0">이메일</label>
                             </div>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                {/* <input id="receivespoint1" type="checkbox" name='agree4' checked={!!signupData.agree4} onChange={handleOnChange} /> */}
+                                <input id="receivespoint1" type="checkbox" name='agree4' checked={!!agreeList.agree4} onChange={handleOnChange} />
                                 <label htmlFor="receivespoint1">문자</label>
                             </div>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                {/* <input id="receivespoint2" type="checkbox" name='agree5' checked={!!signupData.agree5} onChange={handleOnChange} /> */}
+                                <input id="receivespoint2" type="checkbox" name='agree5' checked={!!agreeList.agree5} onChange={handleOnChange} />
                                 <label htmlFor="receivespoint2">DM</label>
                             </div>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                {/* <input id="receivespoint3" type="checkbox" name='agree6' checked={!!signupData.agree6} onChange={handleOnChange} /> */}
+                                <input id="receivespoint3" type="checkbox" name='agree6' checked={!!agreeList.agree6} onChange={handleOnChange} />
                                 <label htmlFor="receivespoint3">TM</label>
                             </div>
                         </div>

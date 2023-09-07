@@ -152,4 +152,19 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 라운지",
         url: "/mylounge/findstore"
     },
+    {
+        id: 31,
+        name: "설정",
+        url: "/setting"
+    },
+    {
+        id: 32,
+        name: "마이 회원정보",
+        url: "/withdrawal/leaveUsingService"
+    },
+    {
+        id: 33,
+        name: "마이 회원정보",
+        url: "/withdrawal/leaveOnline"
+    },
 ];

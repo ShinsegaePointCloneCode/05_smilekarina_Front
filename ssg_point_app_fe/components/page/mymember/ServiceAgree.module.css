@@ -237,3 +237,14 @@ section .setting_list:last-of-type {
 .list_cnt li.str, .list_cnt li.str:before {
     color: #eb0000!important;
 }
+.list_cnt li:before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 20px;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 700;
+}
+

@@ -44,7 +44,7 @@ export const checkId = async (name: String, phone: String) => {
       return undefined;
     }
   } catch (error) {
-    console.error("Error sending POST request:", error);
+    console.error("Error sending request:", error);
 
   }
   return undefined;

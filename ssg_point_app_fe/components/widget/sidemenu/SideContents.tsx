@@ -4,6 +4,8 @@ import Logo from '@/components/ui/header/Logo'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Menu from './Menu'
+import GetUsablePoint from '@/components/layout/GetUsablePoint'
+import Link from 'next/link'
 import { dateFormat } from '@/components/page/mypoint/PointFilter'
 
 
@@ -28,12 +30,25 @@ export default function SideContents() {
               <div className={`${styles.lnb_top}`}>
                 <div className={`${styles.top_cnt}`}>
                   <div className={`${styles.app_btn_box}`}>
-                    <p className={`${styles.member_txt}`}>
-                      <strong className={`${styles.txt_line0}`}>
-                        {session.data.user.userName}
-                      </strong>
-                      님 반갑습니다.
-                    </p>
+                    <div className={`flex justify-between items-center w-full ${styles.member_txt}`}>
+                      <div className="flex items-center space-x-2">
+                        <strong className={`${styles.txt_line0}`}>
+                          {session.data.user.userName}
+                        </strong>
+                        <span>님 반갑습니다.</span>
+                      </div>
+                      <div className="flex ">
+                        <Image className='mr-2' src='/images/sideMenu/bell-1.png' alt='' width={30} height={30} />
+                        <Link href={'/setting'}>
+                          <Image src='/images/sideMenu/gear-1.png' alt='' width={30} height={30} />
+                        </Link>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div className={`${styles.point_txt}`}>
+                    <GetUsablePoint token={session.data.user.token} />
                   </div>
                   <div className={`${styles.btn_box}`}>
                     <button className={`${styles.btn1}`} onClick={() => signOut({ callbackUrl: '/login' })} >
@@ -86,7 +101,7 @@ export default function SideContents() {
                 </p>
                 <p className={`${styles.menu_box}`}>
                   <a className={`${styles.menu}`} href="">
-                  <Image src="/images/menu_big_22.png" alt="" width={40} height={40} />
+                    <Image src="/images/menu_big_22.png" alt="" width={40} height={40} />
                     스마트 영수증
                   </a>
                 </p>
@@ -108,9 +123,9 @@ export default function SideContents() {
               </span>
             </p>
           </div>
-          
+
           <Menu />
-          
+
           <ul className={`${styles.lnb_terms}`}>
             <li>
               <a href="">
