@@ -3,10 +3,10 @@ import style from './Coupon.module.css'
 import Barcode from '@/components/layout/Barcode'
 import { useBarcode } from 'next-barcode';
 
-export default function CouponShowBarcode() {
+export default function CouponShowBarcode({couponNumber} : {couponNumber :string}) {
 
   const { inputRef } = useBarcode({
-    value: '1234-12222',
+    value: couponNumber,
     options: {
       background: '#ffffff',
       displayValue: false,

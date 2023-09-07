@@ -11,7 +11,7 @@ export default async function Ingevent() {
   return (
     <>
     {/* <EventList events={event}/> */}
-    <SortMenu/>
+    {/* <SortMenu /> */}
     <EventList/>
     </>
   )

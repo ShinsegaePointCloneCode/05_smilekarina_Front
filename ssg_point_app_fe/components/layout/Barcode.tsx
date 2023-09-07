@@ -32,35 +32,35 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
 
 
 
-    useEffect(() => {
-        const getBarcode = async () => {
-            if (!token) {
-                console.error("Token is not provided.");
-                return;
-            }
-            try {
-                const response = await fetch(`https://smilekarina.duckdns.org/api/v1/card/pointcard`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
+    // useEffect(() => {
+    //     const getBarcode = async () => {
+    //         if (!token) {
+    //             console.error("Token is not provided.");
+    //             return;
+    //         }
+    //         try {
+    //             const response = await fetch(`https://smilekarina.duckdns.org/api/v1/card/pointcard`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Bearer ${token}`
+    //                 }
+    //             });
 
-                if (!response.ok) {
-                    throw new Error(`Fetch failed with status: ${response.status}`);
-                }
-                const data = await response.json();
-                setBarcode(data.result.cardNumber);
+    //             if (!response.ok) {
+    //                 throw new Error(`Fetch failed with status: ${response.status}`);
+    //             }
+    //             const data = await response.json();
+    //             setBarcode(data.result.cardNumber);
 
-            } catch (error) {
-                console.error('Error fetching barcode:', error);
-            }
-        };
+    //         } catch (error) {
+    //             console.error('Error fetching barcode:', error);
+    //         }
+    //     };
 
-        getBarcode();
+    //     getBarcode();
 
-    }, []);
+    // }, []);
 
 
     return (
