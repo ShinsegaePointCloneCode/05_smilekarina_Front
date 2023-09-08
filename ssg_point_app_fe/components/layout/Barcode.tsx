@@ -13,6 +13,7 @@ interface BarcodeProps {
 }
 
 
+
 export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
 
     const [barcode, setBarcode] = useState<string>('')
