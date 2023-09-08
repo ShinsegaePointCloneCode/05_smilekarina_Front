@@ -1,7 +1,7 @@
 'use client'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import React from 'react'
 import style from './ChgPntPwd.module.css'
 
@@ -19,7 +19,9 @@ export default function ChgPntPwd() {
 
     const router = useRouter();
     const session = useSession();
-    const PointPwChHandler = ( e: any) => {
+    const token = session.data?.user.token
+
+    const PointPwChHandler = (e: any) => {
         e.preventDefault();
         console.log(PointPw1,PointPw2)
         if(PointPw1 === PointPw2) {
@@ -28,25 +30,24 @@ export default function ChgPntPwd() {
             console.log("error")
             // 알림 주기 입력 값이 다르다 
         }
-
-        console.log(session.data)
-
-        const token = session.data?.user.token
-
-       const res = fetch("https://smilekarina.duckdns.org/api/v1/user/pointpwdChg",
-                {
-                    method : "PUT",
-                    headers : {
-                        "Content-Type" : "application/json",
-                        "Authorization" : `Bearer ${token}` 
-                    },
-                    body : JSON.stringify({pointPassword: PointlastPw})
-                })
-                .then(res=> res.json())
-                .then(data => data.success ? router.push("/mypoint/cardManage") : console.log("error"))
-        console.log(res)
-               
     }
+
+    useEffect(()=>{
+        const getdata = (async() => {
+            await fetch("https://smilekarina.duckdns.org/api/v1/user/pointpwdChg",
+                    {
+                        method : "PUT",
+                        headers : {
+                            "Content-Type" : "application/json",
+                            "Authorization" : `Bearer ${token}` 
+                        },
+                        body : JSON.stringify({pointPassword: PointlastPw})
+                    })
+                    .then(res=> res.json())
+                    .then(data => data.success ? router.push('/mypoint/cardManage') : console.log("error"))
+       })
+       getdata();
+    },[PointlastPw])
     
     return (
         <>

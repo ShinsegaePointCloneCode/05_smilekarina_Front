@@ -226,6 +226,26 @@
     bottom: -2px;
 }
 
+.coupon_content .franchisee_barcode .coupon_btn_wrap .coupon_all_btn{
+    font-size: 14px;
+    position: relative;
+    padding-right: 26px;
+}
+
+.coupon_content .franchisee_barcode .coupon_btn_wrap .coupon_all_btn:before {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEQSURBVHgB7ZjhDYIwEIWfLiAbeBswgqMwgiMwgqM4AiPoBugEuIG2EUxbW6zplfLjvuQlRpvjtfeEC4AgCIJJpbTHSiGlYVQFJrbgQ59cNWoHJjgNZkEMpiIGUxGDqYjBVGINcj9jo+vFGCSlXumq1CCdxqjH8szWRfQA8BzVBtYdjDWh0zkZawYwdoXw3vVU/OwpPmdQb7Izfu+RYSyjHxcJGaxhb64D4zjmo4XdpmbGYIO4eLBz9FzYNejmjeMP9hcEu3WXwOcseYuFYOfSVfa8xWLmcvG8xTLlskjeYiGspKXCxMbznW5RjTLclO5zCwj2DXhpfb2VcMetB8pjvZXwtZhGlUDPiGs4JEH48AL8u3bPi059VgAAAABJRU5ErkJggg==)no-repeat left 0/19px 19px;
+    content: "";
+    /* display: inline-block; */
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    right: 0;
+    /* top: 2%; */
+    bottom: 1%;
+}
+
+
+
 .coupon_lists_wrap ul {
     list-style: none;
 }

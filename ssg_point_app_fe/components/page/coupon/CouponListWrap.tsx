@@ -14,65 +14,76 @@ export default function CouponListWrap() {
   const islogin = session == null ? false : true
   console.log(islogin)
 
-  const [couponlist, setCouponList] = useState<CouponType[]>();
+  const [couponlist, setCouponList] = useState<CouponType[]>([] as CouponType[]);
   const [orderType, setorderType] = useState<Number>(30);
   const [page, setPage] = useState(0);
-  const size = 1;
+  const size = 10;
 
-
-  // useEffect(() => {
-  //   console.log("open")
-  //   const getdata = (async () => {
-  //     {
-  //       islogin ? fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/${orderType}?page=${page}&size=${size}`,
-  //         {
-  //           method : "GET",
-  //           headers : {
-  //               "Content-Type" : "application/json",
-  //               "Authorization" : `Bearer ${session.data?.user.token}` 
-  //           },
-  //         })
-  //           .then(res => res.json())
-  //           .then(result => setCouponList(result.content))
-        
-  //       : fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/notLogged/${orderType}?page=${page}&size=${size}`)
-  //         .then(res => res.json())
-  //         .then(result => setCouponList(result.content))
-  //     }
-  //   })
-  //   getdata();
-  // }, [])
 
   useEffect(() => {
-    console.log(islogin, orderType,page,size)
-    const token = session.data?.user.token 
+    console.log(islogin, orderType, page, size)
+    const token = session.data?.user.token
     const getdata = (() => {
-      {
-        islogin ? fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/${orderType}?page=${page}&size=${size}`,
-          {
-            method : "GET",
-            headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : `Bearer ${token}` 
-            },
-          })
+        if (islogin) {
+          fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/${orderType}?page=${page}&size=${size}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+              },
+            })
             .then(res => res.json())
-            .then(result => setCouponList(result.content))
+            .then(data => {
+              // console.log(data.result)
+              setCouponList(data.result.content)
+            })
+        } else {
+          fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/notLogged/${orderType}?page=${page}&size=${size}`)
+            .then(res => res.json())
+            .then(data => setCouponList(data.result.content))
+        }
         
-        : fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/notLogged/${orderType}?page=${page}&size=${size}`)
-          .then(res => res.json())
-          .then(result => setCouponList(result.content))
-      }
-    })
-    getdata();
-  }, [orderType, page])
+      })
+      getdata();
+
+  }, [])
+
+  useEffect(() => {
+    console.log(islogin, orderType, page, size)
+    const token = session.data?.user.token
+    const getdata = (() => {
+        if (islogin) {
+          fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/${orderType}?page=${page}&size=${size}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+              },
+            })
+            .then(res => res.json())
+            .then(data => setCouponList(data.result.content))
+        } else {
+          fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/notLogged/${orderType}?page=${page}&size=${size}`)
+            .then(res => res.json())
+            .then(data => setCouponList(data.result.content))
+        }
+        
+      })
+      getdata();
+
+  }, [orderType,page])
 
 
   return (
     <div className={style.coupon_lists_wrap}>
       <div className={style.coupon_serch}>
-        <CouponSortType orderType= {orderType} setorderType={setorderType}/>
-        <CouponDownAll />
+        <CouponSortType orderType={orderType} setorderType={setorderType} />
+        {
+          couponlist.length > 0 ?  <CouponDownAll couponlist={couponlist}/> : 'loading'
+        }
+       
       </div>
       <ul>
         {
