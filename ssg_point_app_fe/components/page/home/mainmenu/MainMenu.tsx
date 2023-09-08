@@ -15,18 +15,18 @@ export default function MainMenu() {
                                 aria-hidden="true" alt="" />이벤트</Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link href="/benefits/pntPlus/attend">
                             <img src="/images/logo2.png"
-                                aria-hidden="true" alt="" />출석체크</a>
+                                aria-hidden="true" alt="" />출석체크</Link>
                     </li>
                     <li>
-                        <a href="">
+                        <Link href="/benefits/pntPlus/roulette">
                             <img src="/images/logo3.png"
-                                aria-hidden="true" alt="" />럭키룰렛</a>
+                                aria-hidden="true" alt="" />럭키룰렛</Link>
                     </li>
                     <li>
-                        <a href="">
-                            <img src="/images/logo5.png" aria-hidden="true" alt="" />운세서비스</a>
+                        <Link href="/benefits/benefitMyLuck">
+                            <img src="/images/logo5.png" aria-hidden="true" alt="" />운세서비스</Link>
                     </li>
                     <li>
                         <a href="">

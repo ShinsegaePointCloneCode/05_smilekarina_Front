@@ -21,7 +21,7 @@ export default function FormArea() {
     const [signupData, setSignupData] = useState<SignUpFormDataType>({
         loginId: '',
         password: '',
-        name: '',
+        userName: '',
         phone: '',
         zoneCode: '',
         address: '',
@@ -53,9 +53,10 @@ export default function FormArea() {
         
         const {
             loginId,
-            name: userName,
+            userName,
             password,
             phone,
+            zoneCode,
             address,
             detailAddress,
             agree1: optionOne,
@@ -66,7 +67,7 @@ export default function FormArea() {
             agree6: tm
         } = signupData;
 
-        const fullAddress = address + "," + detailAddress;
+        const fullAddress = zoneCode+ "," + address + "," + detailAddress;
 
         try {
             const response = await fetch('https://smilekarina.duckdns.org/api/v1/user/join/cert', {
@@ -95,7 +96,6 @@ export default function FormArea() {
             })
             const data = await response.json();
             if (response){
-                console.log(data.result);
                 localStorage.setItem('tempLoginId', data.result.loginId.toString());
                 localStorage.setItem('tempAddress', data.result.address.toString());
                 localStorage.setItem('tempEmail', data.result.email.toString());
@@ -116,7 +116,7 @@ export default function FormArea() {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data.success);
+            
             if (data.success) {
                 setModalContent("입력하신 아이디는 사용이 가능 합니다.");
             } else {
@@ -159,7 +159,7 @@ export default function FormArea() {
         if (tempName && tempPhone) {
             setSignupData({
                 ...signupData,
-                name: tempName,
+                userName: tempName,
                 phone: tempPhone,
             })
         }
@@ -228,7 +228,7 @@ export default function FormArea() {
                 <div className={`${styles.form_box} ${styles.required}`}>
                     <p className={styles.tit}> 이름 <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
-                        <input type="text" id="name" name='name' title="이름" value={signupData.name.toString()} readOnly
+                        <input type="text" id="userName" name='userName' title="이름" value={signupData.userName.toString()} readOnly
                             className={styles.readonly_bg} />
                     </div>
                 </div>

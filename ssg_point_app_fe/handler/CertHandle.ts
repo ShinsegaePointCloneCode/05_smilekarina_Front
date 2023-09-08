@@ -36,7 +36,29 @@ export const checkId = async (name: String, phone: String) => {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data);
+    
+    if (data.success) {
+      return data.result.loginId
+    } else {
+      
+      return undefined;
+    }
+  } catch (error) {
+    console.error("Error sending request:", error);
+
+  }
+  return undefined;
+}
+export const checkIdAdrr = async (name: String, phone: String) => {
+  try {
+    phone = formatPhoneNumber(phone?.toString() || "");
+
+    const response = await fetch(`https://smilekarina.duckdns.org/api/v1/member/findIdPw?userName=${name}&phone=${phone}`)
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    
     if (data.success) {
       return data.result
     } else {

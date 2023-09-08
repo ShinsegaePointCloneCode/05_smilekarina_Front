@@ -19,9 +19,7 @@ export const withdrawal = async (props: {token?: string}) => {
             console.log("Withdrawal success.");
             signOut({ callbackUrl: '/' })
             
-        } else {
-            
-        }
+        } 
 
     } catch(e) {
         console.log(e);

@@ -39,7 +39,7 @@ export default function ClubAgree() {
                           <label htmlFor="radio01">여자</label>
                       </div>
                       <div className={`${styles.input_box}`}>
-                        <input id="name00" type="number" value=""/>
+                        <input id="name00" type="number" defaultValue=""/>
                           <label htmlFor="name00" className="">
                             <span className={`${styles.in_box}`}>생년월일
                               <em>ex)20170201</em>
@@ -60,7 +60,7 @@ export default function ClubAgree() {
                           <label htmlFor="radio04">여자</label>
                       </div>
                       <div className={`${styles.input_box}`}>
-                        <input id="name01" type="number" value=""/>
+                        <input id="name01" type="number" defaultValue=""/>
                           <label htmlFor="name01" className="">                                 <span className={`${styles.in_box}`}>생년월일 <em>ex)20170201</em></span>
                           </label>
                       </div>
@@ -118,7 +118,7 @@ export default function ClubAgree() {
                     <div className={`${styles.form_cont}`}>
                       <div className={`${styles.select_box}`}>
                         <select id="areaCarno" title="지역번호">
-                        <option value="" selected>지역번호없음</option>
+                        <option defaultValue="" >지역번호없음</option>
                           <option value="서울">서울</option>
                           <option value="부산">부산</option>
                           <option value="경기">경기</option>
@@ -138,19 +138,19 @@ export default function ClubAgree() {
                       </div>
                       <div className={`${styles.benefits_select_box}`}>
                         <div className={`${styles.input_box} ${styles.size2} ${styles.location}`}>
-                          <input id="name040" type="number" value="" title="차량 앞자리 번호를 입력해주세요"/>
+                          <input id="name040" type="number" defaultValue="" title="차량 앞자리 번호를 입력해주세요"/>
                             <label htmlFor="name040" className="">
                               <span className={`${styles.in_box}`}>차량 앞자리 번호</span>
                             </label>
                         </div>
                         <div className={`${styles.input_box} ${styles.size2} ${styles.word}`} >
-                          <input id="name050" type="text" value="" title="차량 중간 글자를 입력해주세요"/>
+                          <input id="name050" type="text" defaultValue="" title="차량 중간 글자를 입력해주세요"/>
                             <label htmlFor="name050" className="">
                               <span className={`${styles.in_box}`}>차량 중간 글자</span>
                             </label>
                         </div>
                         <div className={`${styles.input_box} ${styles.size2} ${styles.number}`}>
-                          <input id="name060" type="number" value="" title="차량 마지막 번호를 입력해주세요"/>
+                          <input id="name060" type="number" defaultValue="" title="차량 마지막 번호를 입력해주세요"/>
                             <label htmlFor="name060" className="">
                               <span className={`${styles.in_box}`}>차량 마지막 번호</span>
                             </label>

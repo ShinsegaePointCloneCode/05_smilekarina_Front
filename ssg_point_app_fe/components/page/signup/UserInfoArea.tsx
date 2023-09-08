@@ -12,9 +12,14 @@ export default function UserInfoArea(props: { phone?: string, address?: string, 
 
     const maskAddress = (address: string | undefined) => {
         if (!address) return "없음";
-        const [front, ...rest] = address.split(",");
-        return `${front}, *****`;
+        
+        const parts = address.split(",");
+        if (parts.length < 3) return address; // 두 번째 ','가 없는 경우 원래의 주소 반환
+    
+        const [_, secondPart, ...rest] = parts;
+        return `${secondPart}, *****`;
     }
+    
 
     const getAdAgreeString = () => {
         const mapping = {

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import modulestyle from "./SubMenu.module.css"
 import { MenuType } from '@/types/MenuType';
-import { mypageMenuData, memberMenuData, eventMenuData, myPointMenuData, myloungeMenuData } from '@/datas/subMenuData';
+import { mypageMenuData, memberMenuData, eventMenuData, myPointMenuData, myloungeMenuData, mybenefitMenuData } from '@/datas/subMenuData';
 
 const menuDataMapping: {
   [key: string]: MenuType[];
@@ -15,6 +15,7 @@ const menuDataMapping: {
   myinfo: memberMenuData,
   mypage: mypageMenuData,
   mylounge: myloungeMenuData,
+  mybenefit: mybenefitMenuData,
   
   // 다른 pathname을 추가하려면 여기에 추가하세요.
   // 예: anotherPath: anotherMenuData

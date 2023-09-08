@@ -11,46 +11,47 @@ export default function LeaveInfo() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [modalContent, setModalContent] = useState<string>("");
     const [routePath, setRoutePath] = useState<string>("");
+    const [sendToken, setSendToken] = useState<string>("");
     const session = useSession()
 
-    const withdrawal = async () => {
-        if (!session.data?.user.token) {
-            console.error("Token is not provided.");
-            return;
-        }
-        try{
+    // const withdrawal = async () => {
+    //     if (!session.data?.user.token) {
+    //         console.error("Token is not provided.");
+    //         return;
+    //     }
+    //     try{
     
-            const response = await fetch("https://smilekarina.duckdns.org/api/v1/withdrawal", {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${session.data?.user.token}`
-                    },                    
-                })
-            const data = await response.json();
-            if (data.success) {
-                console.log("Withdrawal success.");
-                signOut({ callbackUrl: '/' })
+    //         const response = await fetch("https://smilekarina.duckdns.org/api/v1/withdrawal", {
+    //                 method: 'PUT',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Bearer ${session.data?.user.token}`
+    //                 },                    
+    //             })
+    //         const data = await response.json();
+    //         if (data.success) {
+    //             console.log("Withdrawal success.");
+    //             signOut({ callbackUrl: '/' })
                 
-            } else {
+    //         } else {
                 
-            }
+    //         }
     
-        } catch(e) {
-            console.log(e);
-        }
-    };
+    //     } catch(e) {
+    //         console.log(e);
+    //     }
+    // };
 
     const checkWithdrawal = async () => {
         setModalContent('정말로 탈퇴하시겠습니까?');
-        
+        setSendToken(session.data?.user.token);
         onOpen();
-        withdrawal();
+        // withdrawal();
     }
 
     return (
         <div>
-            <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} routePath={routePath} />
+            <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} routePath={routePath} token={sendToken} />
             <div className={`${styles.terms_agree_box_wrap}`}>
                 <h3 className={`${styles.tit}`}> 회원 탈퇴 사이트 </h3>
                 <div className={`${styles.terms_agree_box2}`}>

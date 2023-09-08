@@ -167,4 +167,44 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 회원정보",
         url: "/withdrawal/leaveOnline"
     },
+    {
+        id: 34,
+        name: "마이 회원정보",
+        url: "/myinfo/modify"
+    },
+    {
+        id: 35,
+        name: "마이 회원정보",
+        url: "/member/changePwd"
+    },
+    {
+        id: 36,
+        name: "마이 혜택",
+        url: "/benefits/pntPlus/attend"
+    },
+    {
+        id: 37,
+        name: "마이 혜택",
+        url: "/benefits/pntPlus/roulette"
+    },
+    {
+        id: 38,
+        name: "마이 혜택",
+        url: "/benefits/benefitMyLuck"
+    },
+    {
+        id: 39,
+        name: "마이 혜택",
+        url: "/benefits/myCoupon"
+    },
+    {
+        id: 40,
+        name: "마이 혜택",
+        url: "/benefits/myEvent"
+    },
+    {
+        id: 41,
+        name: "마이 혜택",
+        url: "/benefits/pntTip"
+    },
 ];

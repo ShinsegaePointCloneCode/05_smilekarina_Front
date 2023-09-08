@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './CertPage.module.css'
 import { usePathname, useRouter } from 'next/navigation'
 import { CertFormDataType } from '@/types/userDataType'
-import { handleOnChange, handleLocalStorage, checkId } from '@/handler/CertHandle';
+import { handleOnChange, handleLocalStorage, checkId, checkIdAdrr } from '@/handler/CertHandle';
 import { useDisclosure } from '@nextui-org/react'
 import PublicModal from '@/components/widget/modal/Modal'
 
@@ -15,7 +15,7 @@ export default function CertPage() {
     const [routePath, setRoutePath] = useState<string>("");
     const [certData, setCertData] = useState<CertFormDataType>({
         loginId: '',
-        name: '',
+        userName: '',
         birthday: '',
         phone: '',
         gender: 'M',
@@ -32,7 +32,7 @@ export default function CertPage() {
             router.push('/member/join/agree');
 
         } else if (routePath === '/member/findIdPw') {
-            const result = await checkId(certData.name, certData.phone)
+            const result = await checkId(certData.userName, certData.phone)
             if (result) {
                 localStorage.setItem('loginId', result.toString())
                 router.push('/member/findIdResult')
@@ -42,9 +42,9 @@ export default function CertPage() {
                 setRoutePath('/member/join')
                 onOpen();
             }
-            
+
         } else if (routePath === '/member/findPw') {
-            const result = await checkId(certData.name, certData.phone)
+            const result = await checkId(certData.userName, certData.phone)
             if (result && result === certData.loginId) {
                 localStorage.setItem('loginId', result.toString())
 
@@ -55,8 +55,8 @@ export default function CertPage() {
                 setRoutePath('/member/findPw')
                 onOpen();
             }
-        }else if (routePath === '/mypoint/chgPntPwdCert') {
-            const result = await checkId(certData.name, certData.phone)
+        } else if (routePath === '/mypoint/chgPntPwdCert') {
+            const result = await checkId(certData.userName, certData.phone)
             if (result) {
                 localStorage.setItem('loginId', result.toString())
                 router.push('/mypoint/chgPntPwd')
@@ -66,7 +66,29 @@ export default function CertPage() {
                 setRoutePath('/mypoint/chgPntPwdCert')
                 onOpen();
             }
-            
+        } else if (routePath === '/myinfo/cert') {
+            const result = await checkIdAdrr(certData.userName, certData.phone)
+            if (result) {
+                localStorage.setItem('loginId', result.loginId.toString())
+                localStorage.setItem('address', result.address.toString())
+                router.push('/myinfo/modify')
+            }
+            else {
+                setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
+                onOpen();
+            }
+        }else if (routePath === '/myinfo/changePwd') {
+            const result = await checkId(certData.userName, certData.phone)
+            if (result) {
+                
+                router.push('/member/changePwd')
+            }
+            else {
+                setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
+                // setRoutePath('/myinfo/changePwd')
+                onOpen();
+            }
+
         }
     }
 
@@ -108,7 +130,7 @@ export default function CertPage() {
                                 <div className={styles.form_box}>
                                     <p className={styles.tit}> 이름을 입력해 주세요. </p>
                                     <div className={styles.input_box}>
-                                        <input name="name" id="name" type="text" placeholder='이름 입력' title="회원가입을 위해 입력해주세요."
+                                        <input name="userName" id="userName" type="text" placeholder='이름 입력' title="회원가입을 위해 입력해주세요."
                                             onChange={(e) => handleOnChange(e, certData, setCertData)} />
                                     </div>
                                     <p className={styles.error_txt}>
@@ -263,7 +285,7 @@ export default function CertPage() {
                                 <div className={styles.btn_box}>
                                     <button className={styles.btn_primary}
                                         onClick={(e) => {
-                                            handleLocalStorage(certData.name, certData.phone);
+                                            handleLocalStorage(certData.userName, certData.phone);
                                             handleCertification();
                                         }}> 인증번호 요청 </button>
                                     {/* <button className={styles.btn_primary}
