@@ -7,7 +7,7 @@ function Logo(props: { url: string, imgUrl: string, imgAlt: string }) {
     return (
         <div className='header_logo flex align-center'>
             <div className='ml-2 back_btn flex justify-center items-center'>
-            <Link href={url} >
+            <a href={url} >
                 <div className=' '>
                     <Image
                         src={imgUrl}
@@ -17,7 +17,7 @@ function Logo(props: { url: string, imgUrl: string, imgAlt: string }) {
                         priority
                     />
                 </div>
-            </Link>
+            </a>
             </div>
         </div>
     )

@@ -1,0 +1,81 @@
+.find_store_wrap04 {
+    padding: 40px 20px 80px;
+}
+.store_select_box {
+    position: relative;
+    font-size: 0;
+}
+.store_select_box .select_box:first-of-type {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.store_select_box .select_box {
+    width: 50%;
+    box-sizing: border-box;
+    margin: 10px 0 0 0;
+}
+.select_box {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    background: #fff;
+    border-radius: 8px;
+}
+.select_box select {
+    display: block;
+    width: 100%;
+    height: 48px;
+    padding: 0 32px 0 15px;
+    box-sizing: border-box;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    color: #000;
+}
+.select_box:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    right: 14px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 10px;
+    height: 7px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAVCAYAAAAuJkyQAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACOSURBVHgBzdZLDsAgCARQblRuyhE4atuFpi60fmDQSdg0hnlpXEj05UoTnWqvvHOnEYqL1nq5+JhHCR+t9HILhEZpo5N7BxCoVpeMHvRETXcgUcu7ESjzTk+U2y6PRe5/27IQdh9XFsMwKwVwzExRGGakMBzTQ23BzKDCMCOocMwfahsmR07C5DAVjytLHkm1yW3+j4vHAAAAAElFTkSuQmCC) no-repeat;
+    background-size: 10px auto;
+}
+.select_box select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: transparent; /* 이 부분은 필요에 따라 조절하세요 */
+    background-image: none; /* 이 부분도 필요에 따라 조절하세요 */
+    /* ... 기타 스타일 */
+}
+.store_select_box .select_box:last-of-type {
+    padding-left: 10px;
+}
+.store_select_box+.btn_box {
+    margin-top: 24px;
+}
+.btn_box .btn0 {
+    color: #fff;
+    background: #000;
+}
+.btn_box [class*=btn] {
+    display: block;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    height: 48px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 12px;
+    box-sizing: border-box;
+}

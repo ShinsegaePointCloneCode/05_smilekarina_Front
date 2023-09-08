@@ -141,7 +141,7 @@ export const SideMenuData: SideMenuDataType[] = [
         id: 18,
         title: "마이 페이지",
         subtitle: "마이 포인트",
-        menuName: "포인튼 비밀번호 변경",
+        menuName: "포인트 비밀번호 변경",
         menuUrl: "/",
         menuIcon: "/images/sideMenu/menu_05.png"
     },
