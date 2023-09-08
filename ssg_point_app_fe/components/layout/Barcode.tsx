@@ -21,6 +21,7 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
 
     const { inputRef } = useBarcode({
         value: barcode ? barcode : "default_value", // barcode가 없을 경우의 기본값
+        
         options: {
             background: '#ffffff',
             width: 2.4,
