@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './FindLounge.module.css';
 import FindMap from './FindMap';
+import FindRegion from './FindRegion';
 
 
 export default function FindLounge() {
@@ -44,7 +45,7 @@ export default function FindLounge() {
 
                 {/* 현재 활성화된 탭에 따라 다른 컴포넌트를 보여줍니다. */}
                 {activeTab === 'map' && <FindMap />}
-                {activeTab === 'region' && <RegionComponent />}
+                {activeTab === 'region' && <FindRegion />}
             </section>
         </div>
     );
@@ -52,7 +53,3 @@ export default function FindLounge() {
 
 
 
-// 지역으로 찾기 컴포넌트
-function RegionComponent() {
-    return <div>지역 컴포넌트 내용</div>;
-}

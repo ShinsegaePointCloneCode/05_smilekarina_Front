@@ -42,3 +42,6 @@
 .user_info_cnt .user_info dd {
     color: #767676
 }
+.not_italic {
+    font-style: normal;
+}

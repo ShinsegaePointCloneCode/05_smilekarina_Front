@@ -68,17 +68,17 @@ export const memberMenuData: MenuType[] = [
     {
         id: 3,
         name: "회원정보 수정",
-        url: "/myinfo/cert"
+        url: ["/myinfo/cert", "/myinfo/modify"]
     },
     {
         id: 4,
         name: "비밀번호 변경",
-        url: "/myinfo/changePwd"
+        url: ["/myinfo/changePwd", "/member/changePwd"]
     },
     {
         id: 5,
         name: "회원 탈퇴",
-        url: "/withdrawal/leavePassword"
+        url: ["/withdrawal/leavePassword", "/withdrawal/leaveUsingService", "/withdrawal/leaveOnline"]
     }
 
 ];
@@ -96,7 +96,7 @@ export const mypageMenuData: MenuType[] = [
     {
         id: 3,
         name: "마이 혜택",
-        url: "/cert"
+        url: "/benefits/pntPlus/attend"
     },
     {
         id: 4,
@@ -130,5 +130,32 @@ export const myloungeMenuData: MenuType[] = [
         id: 5,
         name: "자주 찾는 매장",
         url: "/serviceAgree"
+    },
+];
+export const mybenefitMenuData: MenuType[] = [
+    {
+        id: 1,
+        name: "포인트 플러스",
+        url: ["/benefits/pntPlus/attend", "/benefits/pntPlus/roulette"]
+    },
+    {
+        id: 2,
+        name: "나의 운세보기",
+        url: "/benefits/benefitMyLuck"
+    },
+    {
+        id: 3,
+        name: "마이 쿠폰함",
+        url: ["/benefits/myCoupon", "/benefits/endCoupon"]
+    },
+    {
+        id: 4,
+        name: "마이 이벤트",
+        url: ["/benefits/myEvent", "/benefits/winEvent"]
+    },
+    {
+        id: 5,
+        name: "포인트 꿀팁",
+        url: "/benefits/pntTip"
     },
 ]

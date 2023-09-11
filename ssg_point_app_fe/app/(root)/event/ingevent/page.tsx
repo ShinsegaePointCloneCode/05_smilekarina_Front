@@ -1,5 +1,5 @@
 import EventList from '@/components/page/event/EventList';
-import SortMenu from '@/components/page/event/EventSortMenu';
+import SortMenu from '@/components/page/event/SelectSortType';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import React, { useMemo, useState } from 'react'
@@ -11,7 +11,7 @@ export default async function Ingevent() {
   return (
     <>
     {/* <EventList events={event}/> */}
-    <SortMenu/>
+    {/* <SortMenu /> */}
     <EventList/>
     </>
   )

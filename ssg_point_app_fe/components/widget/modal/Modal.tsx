@@ -1,27 +1,33 @@
+
+
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { withdrawal } from "@/handler/WithdrawalHandle";
+
 
 type PublicModalProps = {
     isOpen: boolean;
     onOpenChange: (newValue: boolean) => void;
     content: string;
     routePath?: string;
+    token?: string;
 };
 
-export default function PublicModal({ isOpen, onOpenChange, content, routePath }: PublicModalProps) {
+export default function PublicModal({ isOpen, onOpenChange, content, routePath, token }: PublicModalProps) {
     const router = useRouter();
-
+    const pathname = usePathname();
+    
     return (
         <>
-            
-            <Modal 
-                isOpen={isOpen} 
+
+            <Modal
+                isOpen={isOpen}
                 onOpenChange={onOpenChange}
                 classNames={{
                     closeButton: "hidden",
                 }}
-                >
+            >
                 <ModalContent>
                     {(onClose) => (
                         <>
@@ -30,14 +36,22 @@ export default function PublicModal({ isOpen, onOpenChange, content, routePath }
                                 <p>{content}</p>
                             </ModalBody>
                             <ModalFooter>
-                                
-                                <Button color="primary" onPress={() => {onClose(); 
-                                                                        if (routePath) {
-                                                                            router.push(routePath);
-                                                                        }}}>
+
+                                <Button color="primary" onPress={() => {
+                                    if (pathname === "/withdrawal/leaveOnline") {
+                                        withdrawal({token});
+                                    }
+                                    onClose();
+                                    if (routePath) {
+                                        router.push(routePath);
+                                    }
+                                }}>
                                     확인
                                 </Button>
-                                
+                                {pathname === "/withdrawal/leaveOnline" && (
+                                    <Button onPress={onClose}>취소</Button>
+                                )}
+
                             </ModalFooter>
                         </>
                     )}

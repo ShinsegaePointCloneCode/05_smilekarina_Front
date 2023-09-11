@@ -13,6 +13,7 @@ interface BarcodeProps {
 }
 
 
+
 export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
 
     const [barcode, setBarcode] = useState<string>('')
@@ -20,6 +21,7 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
 
     const { inputRef } = useBarcode({
         value: barcode ? barcode : "default_value", // barcode가 없을 경우의 기본값
+        
         options: {
             background: '#ffffff',
             width: 2.4,
@@ -50,7 +52,9 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
                 if (!response.ok) {
                     throw new Error(`Fetch failed with status: ${response.status}`);
                 }
+                
                 const data = await response.json();
+                console.log(data.result.cardNumber);
                 setBarcode(data.result.cardNumber);
 
             } catch (error) {

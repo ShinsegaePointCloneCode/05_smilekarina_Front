@@ -31,13 +31,13 @@
 }
 
 .tab_menu_box ul li:first-child {
-    padding: 0 20px 0 40px;
+    padding: 0 10px 0 20px;
 }
 
 .tab_menu_box ul li {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 20px;
     height: 100%;
     box-sizing: border-box;
     position: relative;
