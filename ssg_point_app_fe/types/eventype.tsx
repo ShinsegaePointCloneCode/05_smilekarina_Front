@@ -1,8 +1,10 @@
 export interface EventType {
-    id: number; 
-    event_thumbnail: string; 
-    eventHead: string; 
-    event_start: string; 
-    event_end: string; 
-    event_url: string; 
+    id: number,
+    eventHead: string,
+    linkedUrl: string,
+    regDate: Date,
+    eventStart: Date,
+    eventEnd: Date,
+    eventThumbnail: string,
+    eventType: string
 }
