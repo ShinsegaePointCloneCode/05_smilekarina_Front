@@ -1,16 +1,26 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import styles from './Footer.module.css'
 import Image from 'next/image';
 import footermark from '../../public/images/footermark.png';
 import Link from 'next/link';
+import DarkMode from './DarkMode';
 
 export default function Footer() {
+
+  
     return (
-        <footer className={styles.font}>
+        <div >
+        <footer className={`${styles.font} `}>
             <div className={styles.footer_box} style={{ transitionDuration: '300ms', transform: 'unset' }}>
-                <ul className={styles.terms}>
-                    <li><Link href="#">서비스 이용약관</Link></li>
-                    <li><Link href="#" className={styles.fnt_color}>개인정보 처리방침</Link></li>
+                <ul className={`${styles.terms} flex justify-between`}>
+                    <div>
+                        <li><Link href="#">서비스 이용약관</Link></li>
+                        <li><Link href="#" className={styles.fnt_color}>개인정보 처리방침</Link></li>
+                    </div>
+                    
+                    <li><DarkMode></DarkMode></li>
                 </ul>
                 <div className={styles.info}>
                     <p className={styles.tit}>신세계포인트 고객센터</p>
@@ -60,6 +70,8 @@ export default function Footer() {
                 <div className="dimmed"></div>
             </div> */}
         </footer>
+        </div>
     );
 
 }
+

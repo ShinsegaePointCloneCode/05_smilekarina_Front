@@ -2,6 +2,7 @@
     font-family: Inter, Noto Sans KR, Malgun Gothic, 맑은고딕, 굴림, gulim, helvetica, arial, sans-serif;
 }
 
+
 .footer_box {
     background: #fff;
     box-sizing: border-box;
@@ -31,6 +32,13 @@
 }
 
 .footer_box .terms li a {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 20px;
+    line-height: 20px
+}
+.footer_box .terms li span {
     display: block;
     font-size: 14px;
     font-weight: 500;
