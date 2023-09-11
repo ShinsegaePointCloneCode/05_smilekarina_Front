@@ -1,0 +1,30 @@
+.org_txt_box, .org_txt_box.pd_type2 {
+    padding: 40px 20px;
+}
+.org_txt_box .box_tit {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    word-break: keep-all;
+}
+.org_txt_box .box_tit strong {
+    font-weight: 500;
+    color: #ea035c;
+}
+.org_txt_box .box_txt {
+    font-size: 14px;
+    line-height: 24px;
+    color: #767676;
+    word-break: keep-all;
+    padding: 8px 0 0 0;
+}
+.mypoint_cnt0 {
+    padding: 0 20px 40px;
+}
+
+.sp_line_tit0 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-bottom: 16px;
+}
