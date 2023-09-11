@@ -1,0 +1,100 @@
+.point_info_cardbox {
+    padding: 24px 24px 20px;
+}
+.point_info_cardbox .top_txt {
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+}
+.point_info_cardbox .top_txt strong {
+    font-weight: 500;
+}
+.txt_line0, .wp {
+    display: inline-block;
+}
+.point_info_cardbox .card_num {
+    position: relative;
+    background: #fff;
+    border-radius: 18px;
+    height: 100%;
+    min-height: 160px;
+    margin: 0 2px;
+    padding: 73px 20px 0;
+}
+.point_info_cardbox .card_num p {
+    color: #222;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+.point_info_cardbox .card_num p span {
+    color: #bcbcbc;
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: top;
+    font-weight: 400;
+}
+.point_info_cardbox .copy_btn {
+    color: #505050;
+    background: #fff;
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    width: 36px;
+    height: 28px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #bcbcbc;
+    font-size: 11px;
+    color: #000;
+    padding-bottom: 1px;
+}
+.point_info_cardbox .card_cnt dl {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    display: -ms-flexbox;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.point_info_cardbox .card_cnt dt {
+    -ms-flex: 1;
+    flex: 1;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    line-height: 20px;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.point_info_cardbox .card_cnt dd {
+    -ms-flex: 2.5;
+    flex: 2.5;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    font-family: Inter,Noto Sans KR,sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 500;
+    color: #000;
+}
+.point_info_cardbox .card_cnt dd.point:after {
+    content: "";
+    display: inline-block;
+    margin-left: 7px;
+    width: 33px;
+    height: 30px;
+    background: url(https://m.shinsegaepoint.com/img/point_gradi.d5d9bfaf.png) no-repeat;
+    background-size: 100% auto;
+}

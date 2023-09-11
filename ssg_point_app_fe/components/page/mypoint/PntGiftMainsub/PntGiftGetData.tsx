@@ -1,12 +1,36 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import style from './PntGiftMainsub.module.css'
+import { useSession } from 'next-auth/react';
 
 export default function PntGiftGetData() {
+
+  const [point, setPoint] = useState();
+
+  const session = useSession();
+  const token = session.data?.user.token
+
+  useEffect(()=>{
+    const Point = (()=>{
+      fetch("https://smilekarina.duckdns.org/api/v1/point/usablepoint",{
+        method : "GET",
+        headers : {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => data.success ? setPoint(data.result.totalPoint): console.log("error"))
+    })
+    Point()
+  },[])
+
+
   return (
     <form>
       <div className={style.checkpoint}>
         <p className={style.p_txt2}>선물가능 포인트</p>
-        <p className={style.point}>6 </p>
+        <p className={style.point}>{point}</p>
       </div>
       <div className={style.margin_box}>
         <p className={style.p_txt3}>선물할 포인트</p>
