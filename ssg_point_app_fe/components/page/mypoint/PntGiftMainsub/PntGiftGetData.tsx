@@ -3,12 +3,9 @@ import React, { useEffect, useState } from 'react'
 import style from './PntGiftMainsub.module.css'
 import { useSession } from 'next-auth/react';
 
-export default function PntGiftGetData() {
+export default function PntGiftGetData({token}:{token:string}) {
 
   const [point, setPoint] = useState();
-
-  const session = useSession();
-  const token = session.data?.user.token
 
   useEffect(()=>{
     const Point = (()=>{
@@ -22,7 +19,7 @@ export default function PntGiftGetData() {
       .then(res => res.json())
       .then(data => data.success ? setPoint(data.result.totalPoint): console.log("error"))
     })
-    Point()
+    Point();
   },[])
 
 

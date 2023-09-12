@@ -9,27 +9,12 @@ import CardBoxContent from './cardManage/CardBoxContent';
 import Barcode from '@/components/layout/Barcode';
 
 export default function CardBox() {
+
     const pathname = usePathname();
-
-    const [barcode, setbarcode] = useState<string>("000000000000");
+    
     const [showBarcode, setShowBarcode] = useState<boolean>(false);
-
-
     const session = useSession();
     const token = session.data?.user.token
-    if(pathname === "/mypoint/cardManage"){
-      const barcode = (()=>{
-        fetch("https://smilekarina.duckdns.org/api/v1/card/pointcard",{
-          method : "GET",
-          headers : {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        }).then(res => res.json())
-        .then(data => data.success ? setbarcode(data.result.cardNumber) : null)
-      }) 
-      barcode();
-    }
 
 
     const handleBarcode = (()=>{

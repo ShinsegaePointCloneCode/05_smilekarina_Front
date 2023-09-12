@@ -16,45 +16,49 @@ export default function CardList() {
   const token = session.data?.user.token
 
   useEffect(()=>{
-    const getOnlineData  = (async()=>{
-      await fetch("https://smilekarina.duckdns.org/api/v1/pointcard/online",{
-        method:"GET",
-        headers:{
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
+    if(token){
+      const getOnlineData  = (async()=>{
+        await fetch("https://smilekarina.duckdns.org/api/v1/pointcard/online",{
+          method:"GET",
+          headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => data.success? setOnlineCard(data.result) : console.log("error"))
       })
-      .then(res => res.json())
-      .then(data => data.success? setOnlineCard(data.result) : console.log("error"))
-    })
-
-    const getCreditData  = (async()=>{
-      await fetch("https://smilekarina.duckdns.org/api/v1/pointcard/credit",{
-        method:"GET",
-        headers:{
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
+  
+      const getCreditData  = (async()=>{
+        await fetch("https://smilekarina.duckdns.org/api/v1/pointcard/credit",{
+          method:"GET",
+          headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => data.success? setCreditCard(data.result) : console.log("error"))
       })
-      .then(res => res.json())
-      .then(data => data.success? setCreditCard(data.result) : console.log("error"))
-    })
-
-    const getOfflineData  = (async()=>{
-      await fetch("https://smilekarina.duckdns.org/api/v1/pointcard/offline",{
-        method:"GET",
-        headers:{
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
+  
+      const getOfflineData  = (async()=>{
+        await fetch("https://smilekarina.duckdns.org/api/v1/pointcard/offline",{
+          method:"GET",
+          headers:{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => data.success? setOfflineCard(data.result) : console.log("error"))
       })
-      .then(res => res.json())
-      .then(data => data.success? setOfflineCard(data.result) : console.log("error"))
-    })
+  
+      getOnlineData();
+      getCreditData();
+      getOfflineData(); 
 
-    getOnlineData();
-    getCreditData();
-    getOfflineData(); 
+    }
+
 
   },[])
 

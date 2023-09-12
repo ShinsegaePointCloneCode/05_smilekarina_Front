@@ -12,29 +12,31 @@ export default function CardBoxContent() {
     const [point, setPoint] = useState<number>();
 
     useEffect(() => {
-        const getCardNum = (() => {
-            fetch("https://smilekarina.duckdns.org/api/v1/card/pointcard", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            }).then(res => res.json())
-                .then(data => data.success ? setbarcodeNumber(data.result.cardNumber) : null)
-        })
-
-        const getPoint = (()=>{
-            fetch("https://smilekarina.duckdns.org/api/v1/point/usablepoint", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            }).then(res => res.json())
-                .then(data => data.success ? setPoint(data.result.totalPoint) : null)
-        })
-        getCardNum();
-        getPoint();
+        if(token){
+            const getCardNum = (async() => {
+                await fetch("https://smilekarina.duckdns.org/api/v1/card/pointcard", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                }).then(res => res.json())
+                    .then(data => data.success ? setbarcodeNumber(data.result.cardNumber) : null)
+            })
+    
+            const getPoint = (async()=>{
+                await fetch("https://smilekarina.duckdns.org/api/v1/point/usablepoint", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                }).then(res => res.json())
+                    .then(data => data.success ? setPoint(data.result.totalPoint) : null)
+            })
+            getCardNum();
+            getPoint();
+        }
     }, [])
 
     return (
