@@ -1,4 +1,4 @@
-import EventList from '@/components/page/event/EventListWarp'
+import EventList from '@/components/page/event/EventList'
 import React from 'react'
 
 export default async function Winevent() {

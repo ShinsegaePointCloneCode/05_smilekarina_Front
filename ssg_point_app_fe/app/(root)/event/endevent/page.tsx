@@ -1,4 +1,4 @@
-import EventList from '@/components/page/event/EventListWarp'
+import EventList from '@/components/page/event/EventList'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 

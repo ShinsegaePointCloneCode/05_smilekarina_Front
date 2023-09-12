@@ -20,7 +20,7 @@ function EventListCard({data} : {data : EventType})
     <li>
         <Link href={{pathname:'/event/eventDetail', query : {eventNo : data.id}}}>
           {pathname == "/event/ingevent" ? <EndDate enddate={enddt}/> : 
-            pathname == "/event/endevent" ? data.eventType !== "PA" ? <EndEventImg/> : <WinEventImg/> : null}
+            pathname == "/event/endevent" ? data.eventType !== "PA" ? <EndEventImg/> : <WinEventImg/> : <WinEventImg/>}
           <img src={data.eventThumbnail} alt={data.eventHead} />
 
             
