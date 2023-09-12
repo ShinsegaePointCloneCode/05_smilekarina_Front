@@ -1,27 +1,58 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import style from "./CardManage.module.css"
+import { useSession } from 'next-auth/react';
 
 export default function CardBoxContent() {
 
+    const [barcodeNumber, setbarcodeNumber] = useState<string>();
+    const session = useSession();
+    const token = session.data?.user.token
 
+    const [point, setPoint] = useState<number>();
 
+    useEffect(() => {
+        const getCardNum = (() => {
+            fetch("https://smilekarina.duckdns.org/api/v1/card/pointcard", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(res => res.json())
+                .then(data => data.success ? setbarcodeNumber(data.result.cardNumber) : null)
+        })
+
+        const getPoint = (()=>{
+            fetch("https://smilekarina.duckdns.org/api/v1/point/usablepoint", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(res => res.json())
+                .then(data => data.success ? setPoint(data.result.totalPoint) : null)
+        })
+        getCardNum();
+        getPoint();
+    }, [])
 
     return (
         <div className={style.card_cnt}>
             <div className={style.card_num}>
                 <p id='targetDiv'>
-                    9350
+                    {barcodeNumber?.substring(0,4)}
                     <span>-</span>
-                    1200
+                    {barcodeNumber?.substring(4,8)}
                     <span>-</span>
-                    1863
+                    {barcodeNumber?.substring(8,12)}
                     <span>-</span>
-                    5634
+                    {barcodeNumber?.substring(12,16)}
                 </p>
                 <button className={style.copy_btn}>복사</button>
                 <dl>
                     <dt>사용가능</dt>
-                    <dd className={style.point}>6</dd>
+                    <dd className={style.point}>{point}</dd>
                 </dl>
             </div>
         </div>
