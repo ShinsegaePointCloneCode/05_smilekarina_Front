@@ -5,13 +5,22 @@ import styles from './LoginArea.module.css'
 import Link from 'next/link';
 import { LogInFormDataType } from '@/types/userDataType';
 import { signIn, signOut } from 'next-auth/react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import PublicModal from '@/components/widget/modal/Modal';
+import { useDisclosure } from '@nextui-org/react';
+
+type CustomUser = {
+  backendResponse?: any; // 또는 백엔드 응답의 구체적인 타입을 여기에 정의하실 수 있습니다.
+}
 
 
 
 export default function Loginarea() {
+  const router = useRouter();
   const query = useSearchParams();
   const callBackUrl = query.get('callbackUrl');
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [modalContent, setModalContent] = useState<string>("");
 
 
   const isClient = typeof window !== 'undefined';
@@ -60,7 +69,7 @@ export default function Loginarea() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const autoLogin = isClient && localStorage.getItem('autoLogin') || '';
-      
+
       if (autoLogin) {
         setLoginData({
           ...loginData,
@@ -73,33 +82,45 @@ export default function Loginarea() {
 
   const handleLogin = async () => {
     if (!loginData.loginId && !loginData.password) {
-      alert('아이디와 비밀번호를 입력해주세요.');
+      setModalContent('아이디와 비밀번호를 입력해주세요.')
+      onOpen();
       return;
     }
     if (!loginData.loginId) {
-      alert('아이디를 입력해주세요.');
+      setModalContent('아이디를 입력해주세요.')
+      onOpen();
       return;
     }
     if (!loginData.password) {
-      alert('비밀번호를 입력해주세요.');
+      setModalContent('비밀번호를 입력해주세요.')
+      onOpen();
       return;
     }
     // console.log(loginData)
     const result = await signIn('credentials', {
       loginId: loginData.loginId,
       password: loginData.password,
-      redirect: true,
+      redirect: false,
       callbackUrl: callBackUrl ? callBackUrl : '/'
     })
     
+    if (result?.error) {
+      setModalContent('아이디 또는 비밀번호를 확인해 주세요.');
+      onOpen();
+  } else {
+      router.push(callBackUrl ? callBackUrl : '/')
+  }
+
 
   };
 
 
 
   return (
-    
     <div className={styles.login_input_area}>
+      <div>
+        <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent}  />
+      </div>
       <div className={styles.input_box}>
         <input id="loginId"
           name="loginId"
@@ -151,9 +172,9 @@ export default function Loginarea() {
           <Link href="/member/join" className={styles.btn}>회원가입</Link>
         </li>
       </ul>
-      
+
 
     </div>
-    
+
   )
 }

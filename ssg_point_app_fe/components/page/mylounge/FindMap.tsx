@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import axios from 'axios';
 import { useSession } from 'next-auth/react';
 
 interface Branch {
@@ -95,7 +94,7 @@ export default function FindMap() {
                     alert("이 브라우저는 Geolocation을 지원하지 않습니다.");
                 }
             }
-
+        
 
             fetch('https://smilekarina.duckdns.org/api/v1/mylounge/findStore/map', {
                 method: 'GET',
@@ -113,7 +112,7 @@ export default function FindMap() {
                 })
                 .then(data => {
                     if (data.success) {
-                        setMalls(data.result.content);
+                        setMalls(data.result);
                         console.log("Store data fetched:", data);
                     } else {
                         console.error("Failed to fetch store data:", data);
