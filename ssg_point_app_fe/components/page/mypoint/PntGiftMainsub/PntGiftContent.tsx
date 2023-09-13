@@ -27,7 +27,7 @@ export default function PntGiftContent() {
         {otherUserInfo.result ? 
         <>
           <PntGiftsubCheckUser otherUserInfo={otherUserInfo}/>
-          <PntGiftGetData token={token}/>
+          <PntGiftGetData token={token} otherUserInfo={otherUserInfo} setOtherUserInfo={setOtherUserInfo}/>
           </> 
           : null}
         
