@@ -57,7 +57,7 @@ export default function PntGiftLast() {
 
     return (
         <>
-            {pntGift.result ? <PntGiftLastWarp pntGift = {pntGift}/> :null}
+            {pntGift.result ? <PntGiftLastWarp pntGift = {pntGift} setPntGift={setPntGift} token={token}/> :null}
         </>
        
     )

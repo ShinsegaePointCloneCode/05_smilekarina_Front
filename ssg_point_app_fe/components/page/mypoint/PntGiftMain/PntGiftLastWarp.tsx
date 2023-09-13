@@ -3,9 +3,49 @@ import style from './PntGift.module.css'
 import { PntGiftType } from './PntGiftLast'
 import { dateFormat } from '../PointHistoryDetail'
 
-export default function PntGiftLastWarp({pntGift}:{pntGift : PntGiftType}) {
+export default function PntGiftLastWarp({pntGift,setPntGift, token}:{pntGift : PntGiftType,setPntGift: React.Dispatch<React.SetStateAction<PntGiftType>>
+    ,token:string}) {
 
     const date = new Date(pntGift.createdDate)
+
+    const PntGiftAccepthandler = ()=>{
+        fetch("https://smilekarina.duckdns.org/api/v1/gift/accept",{
+            method: "POST",
+            headers:{
+                "Content-Type" : "application/json",
+                "Authorization" : `Bearer ${token}`
+            },
+            body: JSON.stringify({giftId : pntGift.giftId})
+        }).then(res => res.json())
+        .then(data =>setPntGift({giftId: 0,
+            senderLoginId: '',
+            senderName: '',
+            point: 0,
+            giftMessage : '',
+            giftImage: '',
+            createdDate: '',
+            result : false})).catch(error => console.log(error))
+    }
+
+    const PntGiftCancelhandler = () => {
+        fetch("https://smilekarina.duckdns.org/api/v1/gift/cancel",{
+            method: "POST",
+            headers:{
+                "Content-Type" : "application/json",
+                "Authorization" : `Bearer ${token}`
+            },
+            body: JSON.stringify({giftId : pntGift.giftId})
+        }).then(res => res.json())
+        .then(data =>setPntGift({giftId: 0,
+            senderLoginId: '',
+            senderName: '',
+            point: 0,
+            giftMessage : '',
+            giftImage: '',
+            createdDate: '',
+            result : false})).catch(error => console.log(error))
+    }
+
 
     return (
         <div className={style.gift_accept_message_box}>
@@ -23,8 +63,8 @@ export default function PntGiftLastWarp({pntGift}:{pntGift : PntGiftType}) {
                 <div className={style.cnt1}>
                     <p className={style.point}>{pntGift.point}</p>
                     <div className={style.btn_box}>
-                        <p className={style.btn2}>수락</p>
-                        <p className={style.btn1_gray}>거절</p>
+                        <p className={style.btn2} onClick={PntGiftAccepthandler}>수락</p>
+                        <p className={style.btn1_gray} onClick={PntGiftCancelhandler}>거절</p>
                     </div>
                 </div>
                 <ul className={style.list_cnt}>
