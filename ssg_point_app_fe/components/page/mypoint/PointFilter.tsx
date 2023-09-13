@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import style from './MyPoint.module.css'
 import FilterButton from './FilterButton';
-import { sortKeysType } from './PointList';
+import { PointSortType } from './PointList';
 
 // 날짜 형식 바꾸기 
 export function dateFormat({formatdate}:{formatdate : Date}){
@@ -12,9 +12,9 @@ export function dateFormat({formatdate}:{formatdate : Date}){
 }
 
 export default function PointFilter(
-  {querySort, setQuerySort}
+  {pointquery, setPointquery}
   :
-  {querySort: sortKeysType, setQuerySort: Dispatch<SetStateAction<sortKeysType>>}
+  {pointquery: PointSortType, setPointquery: Dispatch<SetStateAction<PointSortType>>}
 ) {
 
   const nowdate = new Date(); // 현재 날짜 조회 
@@ -31,8 +31,8 @@ export default function PointFilter(
       startDate.setDate(nowdate.getDate() - Number(e.target.value)) :
       startDate.setMonth(nowdate.getMonth() - Number(e.target.value))
     }
-    setQuerySort({
-      ...querySort,
+    setPointquery({
+      ...pointquery,
       rangeStartDate: dateFormat({formatdate : startDate}),
       rangeEndDate: dateFormat({ formatdate: nowdate})
     })
@@ -51,7 +51,7 @@ export default function PointFilter(
         </select>
       </div>
       <div className={style.term}>
-        <p className={style.ff_lato}>{`${querySort.rangeStartDate} ~ ${querySort.rangeEndDate}`}</p>
+        <p className={style.ff_lato}>{`${pointquery.rangeStartDate} ~ ${pointquery.rangeEndDate}`}</p>
       </div>
       <FilterButton/>
     </div>

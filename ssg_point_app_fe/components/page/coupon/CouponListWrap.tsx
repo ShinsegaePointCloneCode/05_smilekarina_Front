@@ -4,27 +4,27 @@ import CouponContent from './CouponContent'
 import CouponSortType from './CouponSortType'
 import CouponDownAll from './CouponDownAll'
 import style from './Coupon.module.css'
-import { useSession } from 'next-auth/react'
 import { CouponType } from '@/types/CouponType'
 
+export default function CouponListWrap({token}:{token:string}) {
 
-export default function CouponListWrap() {
-
-  const session = useSession();
-  const islogin = session == null ? false : true
-  console.log(islogin)
+  // const session = useSession();
+  // const islogin = session == null ? false : true
+  // console.log(islogin)
 
   const [couponlist, setCouponList] = useState<CouponType[]>([] as CouponType[]);
   const [orderType, setorderType] = useState<Number>(30);
   const [page, setPage] = useState(0);
   const size = 10;
 
+  // const token = session.data?.user.token
 
   useEffect(() => {
-    console.log(islogin, orderType, page, size)
-    const token = session.data?.user.token
+    
+    // console.log(token,islogin, orderType, page, size)
+    
     const getdata = (() => {
-        if (islogin) {
+        if (token) {
           fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/${orderType}?page=${page}&size=${size}`,
             {
               method: "GET",
@@ -50,10 +50,10 @@ export default function CouponListWrap() {
   }, [])
 
   useEffect(() => {
-    console.log(islogin, orderType, page, size)
-    const token = session.data?.user.token
+    // console.log(islogin, orderType, page, size)
+    // const token = session.data?.user.token
     const getdata = (() => {
-        if (islogin) {
+        if (token) {
           fetch(`https://smilekarina.duckdns.org/api/v1/couponPage/${orderType}?page=${page}&size=${size}`,
             {
               method: "GET",

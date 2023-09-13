@@ -4,78 +4,78 @@ import React, { useEffect, useState } from 'react'
 import style from "./MyPoint.module.css"
 import PointHistoryDetail from './PointHistoryDetail';
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import PointHistoryTotal from './PointHistoryTotal';
+import { PointSortType } from './PointList';
 
-export default function PointHistory() {
 
-        // api 호출을 위한 path 설정 
-    // const pathname = usePathname();
-    // const apipath = "/point/pointList"
-    // const query = useSearchParams();
-    const session = useSession();
+export default function PointHistory({ token, pointquery }: { token: string, pointquery: PointSortType }) {
 
+    const pathname = usePathname();
+
+    const [pointListData, setPointListData] = useState<PointType[]>([] as PointType[]);
+    const [aTotalPoint, setATotalPoint] = useState<number>(-1);
+    const [uTotalPoint, setUTotalPoint] = useState<number>(-1);
+
+
+    useEffect(() => {
+        if (!token) return
+        const getPointList = (async () => {
+            await fetch(`https://smilekarina.duckdns.org/api/v1/point/pointList?` +
+                `pointType=${pointquery.pointType}` +
+                `&rangeStartDate=${pointquery.rangeStartDate}` +
+                `&rangeEndDate=${pointquery.rangeEndDate}` +
+                `&usedType=${pointquery.usedType}` +
+                `&pointHistoryType=${pointquery.pointHistoryType}` +
+                `&page=0&size=10`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(res => res.json())
+                .then(data => {
+                    setPointListData(data.result.pointDetailOutList)
+                    setATotalPoint(data.result.atotalPoint)
+                    setUTotalPoint(data.result.utotalPoint)
+                }).catch(error => console.log(error))
+        })
+        getPointList()
+
+
+    }, [pointquery, token])
+
+
+    // // 더미 데이터 테스트 
     // const [pointData, setPointData] = useState<PointType[]>();
+
+
     // useEffect(()=>{
     //     const getData = async() => {
-    //         await fetch(
-    //             `https://smilekarina.duckdns.org/api/v1${apipath}`+
-    //             `?tabGb=${query.get("tabGb")}` +
-    //             `&fromDt=${query.get("fromDt")}`+
-    //             `&toDt=${query.get("toDt")}`.trim(),
-    //             {
-    //                 method : "GET",
-    //                 headers : {
-    //                     "Authorization" : session.data.user.token
-    //                 }
-    //             }
-    //             )
+    //         await fetch('http://localhost:9999/pointlist')
+    //         .then(res => res.json())
+    //         .then(data =>{
+    //             setPointData(data.result.pntList)
+    //             setATotalPoint(data.result.aTotalPoint)
+    //             setUTotalPoint(data.result.uTotalPoint)
+    //             console.log(data)
+    //             console.log(session.data? session.data.user.token: null)
+    //         })
     //     }
     //     getData();
     // },[])
 
-    // 더미 데이터 테스트 
-    const pathname = usePathname();
-    const [pointData, setPointData] = useState<PointType[]>();
-    const [atotalPoint, setATotalPoint] = useState<number>();
-    const [uTotalPoint,setUTotalPoint] = useState<number>();
-    useEffect(()=>{
-        const getData = async() => {
-            await fetch('http://localhost:9999/pointlist')
-            .then(res => res.json())
-            .then(data =>{
-                setPointData(data.result.pntList)
-                setATotalPoint(data.result.aTotalPoint)
-                setUTotalPoint(data.result.uTotalPoint)
-                console.log(data)
-                console.log(session.data? session.data.user.token: null)
-            })
-        }
-        getData();
-    },[])
-
-  return (
-    <div className={style.point_wrap}>
-        <div className={pathname==="/mypoint/pntHistory" ? style.point_total : style.gft_total}>
-            <p className={style.p_accumulate}>
-                <span>적립</span>
-                <span className={style.ff_lato}>
-                    {atotalPoint}P
-                </span>
-            </p>
-            <p className={style.p_use}>
-                <span>사용</span>
-                <span className={style.ff_lato}>
-                    {uTotalPoint}P
-                </span>
-            </p>
+    return (
+        <div className={style.point_wrap}>
+            <PointHistoryTotal aTotalPoint={aTotalPoint} uTotalPoint={uTotalPoint} />
+            <ul className={style.point_history}>
+                {pointListData?.length > 0 ? (
+                    pointListData.map((item: PointType) => (
+                        <PointHistoryDetail key={item.pointId} data={item} token={token} pointquery={pointquery} />
+                    ))
+                ) : (
+                    <p>No data available.</p>
+                )}
+            </ul>
         </div>
-        <ul className={style.point_history}>
-            {pointData ? pointData.map((item: PointType) => 
-                (<PointHistoryDetail data = {item}/>
-            )) : null
-            
-            }
-        </ul>
-    </div>
-  )
+    );
 }
