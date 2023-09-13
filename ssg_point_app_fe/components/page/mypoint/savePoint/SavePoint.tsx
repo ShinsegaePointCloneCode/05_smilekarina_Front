@@ -17,7 +17,7 @@ export default function SavePoint() {
   }
 
   useEffect(() => {
-    console.log("open")
+    // console.log("open")
     const getFranchise = (() => {
       fetch(`http://localhost:9999/${select}`)
         .then(res => res.json())
@@ -36,7 +36,7 @@ export default function SavePoint() {
   }
 
   useEffect(() => {
-    console.log("open2")
+    // console.log("open2")
     const getFranchise = (() => {
       fetch(`http://localhost:9999/${select2}`)
         .then(res => res.json())

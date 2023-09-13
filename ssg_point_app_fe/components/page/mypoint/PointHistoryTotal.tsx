@@ -4,7 +4,7 @@ import style from "./MyPoint.module.css"
 
 export default function PointHistoryTotal({aTotalPoint,uTotalPoint}:{aTotalPoint : number ,uTotalPoint:number}) {
 
-    console.log(aTotalPoint,uTotalPoint)
+    // console.log(aTotalPoint,uTotalPoint)
     const pathname = usePathname();
 
     return (

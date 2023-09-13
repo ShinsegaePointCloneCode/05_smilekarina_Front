@@ -35,7 +35,7 @@ export default function ChgPntPwd() {
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         const { name, value } = e.target
-        console.log(name, value)
+        // console.log(name, value)
         setPasswordInput({
                 ...passwordInput, [name]:value
             })

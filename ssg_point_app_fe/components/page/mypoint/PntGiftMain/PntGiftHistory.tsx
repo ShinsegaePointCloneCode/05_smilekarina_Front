@@ -27,7 +27,7 @@ export default function PointHistory({ token, giftquery }: { token: string, gift
                 }
             }).then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setPointListData(data.result.giftDetailListOut)
                     setATotalPoint(data.result.atotalPoint)
                     setUTotalPoint(data.result.utotalPoint)

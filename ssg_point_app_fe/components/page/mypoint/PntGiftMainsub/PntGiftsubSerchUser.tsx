@@ -20,7 +20,7 @@ export default function PntGiftsubSerchUser({token, otherUserInfo, setOtherUserI
     setOtherName(e.target.value)
   }
 
-  console.log(token)
+  // console.log(token)
   const SerchUserhandler = (e:any) => {
     e.preventDefault();
     setCheckUser(true)
@@ -28,7 +28,7 @@ export default function PntGiftsubSerchUser({token, otherUserInfo, setOtherUserI
 
   useEffect(()=>{
     if(token){
-      console.log(token,otherName,phonNumber)
+      // console.log(token,otherName,phonNumber)
       const getUser = (()=>{
         fetch("https://smilekarina.duckdns.org/api/v1/user/checkuser",{
           method :"POST",

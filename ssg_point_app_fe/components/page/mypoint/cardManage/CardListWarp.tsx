@@ -5,7 +5,7 @@ import CardListWarpContent from './CardListWarpContent'
 
 export default function CardListWarp({data} : {data: CardType[]}) {
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className={style.table_box0}>

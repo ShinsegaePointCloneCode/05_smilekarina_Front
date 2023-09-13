@@ -9,7 +9,7 @@ export default function PointWrap({giftquery}:{giftquery:GiftSortType}) {
 
   const session = useSession();
   const token = session.data?.user.token
-  console.log(token)
+  // console.log(token)
 
   return (
     <div className={style.point_wrap}>

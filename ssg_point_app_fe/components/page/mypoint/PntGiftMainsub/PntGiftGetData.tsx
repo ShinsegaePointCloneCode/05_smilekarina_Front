@@ -45,14 +45,14 @@ export default function PntGiftGetData({token, otherUserInfo}:{token:string, oth
   const handelgiftPoint = (e: React.ChangeEvent<HTMLInputElement>) => {
 
       const {name,value} = e.target
-      console.log(name,value)
+      // console.log(name,value)
       setGiftData({
         ...giftData, [name]:value 
       })
   }
 
   const giftPointHandler = () => {
-    console.log(giftData.pointPw)
+    // console.log(giftData.pointPw)
     fetch("https://smilekarina.duckdns.org/api/v1/check/pointPassword",{
       method : "POST",
       headers:{

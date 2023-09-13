@@ -26,7 +26,7 @@ export default function PointGiftMainList() {
     if( queryParam.toString() === `giftGb=${giftquery.giftGb}`) {
       return 
     }
-    console.log('open')
+    // console.log('open')
     router.push(
       `${pathname}?giftGb=${giftquery.giftGb}`
     )

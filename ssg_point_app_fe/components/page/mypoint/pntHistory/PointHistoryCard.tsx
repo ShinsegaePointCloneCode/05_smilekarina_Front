@@ -49,12 +49,12 @@ export default async function PointHistoryCard({token}:{token:string}) {
             addPoint : data.result.addPoint,
             extPoint : data.result.extPoint,
             extNextPoint : data.result.extNextPoint})
-          console.log(data)
+          // console.log(data)
         }).catch(error=> console.log(error))
   }
   getData();
   },[token])
-  console.log(pointInfo)
+  // console.log(pointInfo)
 
   return (
     <div className={style.item_cnt}>

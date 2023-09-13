@@ -6,7 +6,7 @@ import { dateFormat } from '../PointHistoryDetail'
 export default function CardListWarpContent({card}:{card:CardType}) {
 
     const createDt = new Date(card.createdDate)
-    console.log(card.cardName)
+    // console.log(card.cardName)
 
   
     return (

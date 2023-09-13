@@ -45,7 +45,7 @@ export default function PointList() {
     if( queryParam.toString() === `pointType=${pointquery.pointType}&rangeStartDate=${pointquery.rangeStartDate}&rangeEndDate=${pointquery.rangeEndDate}&usedType=${pointquery.usedType}&pointHistoryType=${pointquery.pointHistoryType}`) {
       return 
     }
-    console.log('open')
+    // console.log('open')
     router.push(
       `${pathname}?pointType=${pointquery.pointType}&rangeStartDate=${pointquery.rangeStartDate}&rangeEndDate=${pointquery.rangeEndDate}&usedType=${pointquery.usedType}&pointHistoryType=${pointquery.pointHistoryType}`
     )
