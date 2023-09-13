@@ -4,22 +4,14 @@ import { EventBannerType } from '@/types/eventBannerDataType'
 import React, { useEffect, useState } from 'react'
 
 import SwiperComponent from './Swiper';
+import { SubEventBannerData } from '@/datas/EventBannerData';
 
 export default function SubEventBanner() {
 
     const [eventList, setEventList] = useState<EventBannerType[]>([])
 
     useEffect(() => {
-        const getEvent = async () => await fetch('http://localhost:9999/eventsubbanner', { next: { revalidate: 3600 } })
-            .then(response => response.json())
-            .then(data => {
-                
-                // event.id를 기준으로 오름차순 정렬
-                const sortedData = data.sort((a: EventBannerType, b: EventBannerType) => a.id - b.id);
-                setEventList(sortedData)
-            }
-            )
-        getEvent()
+        setEventList(SubEventBannerData)
     }, [])
 
     return (

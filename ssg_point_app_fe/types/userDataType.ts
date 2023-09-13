@@ -5,6 +5,10 @@ export interface CertFormDataType {
     phone: String,
     gender: String,
     nationality: String,
+    agree1: Boolean,
+    agree2: Boolean,
+    agree3: Boolean,
+    agree4: Boolean,
 }
 
 export interface LogInFormDataType {

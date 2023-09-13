@@ -1,3 +1,4 @@
+import AttendCheck from '@/components/page/mybenefits/AttendCheck'
 import React from 'react'
 
 export default function page() {
@@ -15,6 +16,7 @@ export default function page() {
           </li>
         </ul>
       </div>
+      <AttendCheck />
     </div>
   )
 }
