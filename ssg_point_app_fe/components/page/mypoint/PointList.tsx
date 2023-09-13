@@ -19,7 +19,6 @@ export interface PointSortType{
 
 export default function PointList() {
 
-
   const queryParam = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();

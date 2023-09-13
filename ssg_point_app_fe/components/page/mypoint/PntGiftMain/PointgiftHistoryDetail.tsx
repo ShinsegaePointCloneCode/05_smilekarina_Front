@@ -2,8 +2,8 @@ import { PointType } from '@/types/PointType'
 import React, { useEffect, useState } from 'react'
 import style from './MyPoint.module.css'
 import { usePathname } from 'next/navigation'
-import PntHistoryShow from './PntHistoryShow'
-import { PointSortType } from './PointList'
+import { GiftSortType } from './PointGiftMainList'
+import PntHistoryShow from '../PntHistoryShow'
 
 // 날짜 변경 함수
 export function dateFormat({ formatdate }: { formatdate: Date }) {
@@ -11,7 +11,7 @@ export function dateFormat({ formatdate }: { formatdate: Date }) {
   return result
 }
 
-export default function PointHistoryDetail({ data, token, pointquery }: { data: PointType, token: string, pointquery: PointSortType }) {
+export default function PointGiftHistoryDetail({ data, token, giftquery }: { data: PointType, token: string, giftquery: GiftSortType }) {
 
   const [good, setGood] = useState<boolean>(false);
   const [loadedData, setLoadedData] = useState<PointType>({ ...data }); // State to hold the loaded data
@@ -20,35 +20,7 @@ export default function PointHistoryDetail({ data, token, pointquery }: { data: 
   if (!token) return;
 
 
-  if (pathname === "/mypoint/pntHistory") {
-    useEffect(() => {
-      const getPointDetail = async () => {
-        try {
-          const response = await fetch(`https://smilekarina.duckdns.org/api/v1/point/pointListDetail?pointId=${data.pointId}&pointType=${data.pointType}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`
-            }
-          });
-
-          if (response.ok) {
-            const result = await response.json();
-            const loadedData = { ...data, ...result.result };
-            setLoadedData(loadedData); // Set the loaded data
-            setGood(true);
-          } else {
-            console.error("Failed to fetch data");
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      getPointDetail();
-
-    }, [pointquery])
-
-  } else if (pathname === "/mypoint/pntGiftMain") {
+ if (pathname === "/mypoint/pntGiftMain") {
     useEffect(() => {
       const getPointDetail = async () => {
         try {
@@ -73,7 +45,7 @@ export default function PointHistoryDetail({ data, token, pointquery }: { data: 
         }
       };
       getPointDetail();
-    }, [])
+    }, [giftquery])
 
   }
 

@@ -21,6 +21,7 @@ export default function CardBox() {
       setShowBarcode(true);
     })
 
+
   return (
     <div className={style.point_info_cardbox}>
       <div className={style.cardbox}>

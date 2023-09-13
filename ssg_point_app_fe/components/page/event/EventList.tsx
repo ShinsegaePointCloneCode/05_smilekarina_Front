@@ -19,7 +19,7 @@ export default function EventList() {
             .then(res => res.json())
             .then(data =>{
                 setEventData(data)
-                console.log(data)
+                // console.log(data)
             })
         }
         getData();

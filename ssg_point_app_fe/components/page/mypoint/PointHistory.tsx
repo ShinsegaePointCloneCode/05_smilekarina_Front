@@ -8,43 +8,42 @@ import PointHistoryTotal from './PointHistoryTotal';
 import { PointSortType } from './PointList';
 
 
-export default function PointHistory({token,pointquery}:{token:string, pointquery:PointSortType}) {
+export default function PointHistory({ token, pointquery }: { token: string, pointquery: PointSortType }) {
 
     const pathname = usePathname();
 
-    const [pointListData,setPointListData] = useState<PointType[]>();
+    const [pointListData, setPointListData] = useState<PointType[]>([] as PointType[]);
     const [aTotalPoint, setATotalPoint] = useState<number>(-1);
-    const [uTotalPoint,setUTotalPoint] = useState<number>(-1);
- 
+    const [uTotalPoint, setUTotalPoint] = useState<number>(-1);
 
-    useEffect(()=>{
-        if(pathname === "/mypoint/pntHistory"){
-            const getPointList = (()=>{
-            fetch(`https://smilekarina.duckdns.org/api/v1/point/pointList?`+
-                `pointType=${pointquery.pointType}`+
-                `&rangeStartDate=${pointquery.rangeStartDate}`+
-                `&rangeEndDate=${pointquery.rangeEndDate}`+
-                `&usedType=${pointquery.usedType}`+
-                `&pointHistoryType=${pointquery.pointHistoryType}`+
-                `&page=0&size=10`,{
-                    method : "GET",
-                    headers:{
-                        "Content-Type" : "application/json",
-                        "Authorization" : `Bearer ${token}`
-                    }
-                }).then(res=> res.json())
+
+    useEffect(() => {
+        if (!token) return
+        const getPointList = (async () => {
+            await fetch(`https://smilekarina.duckdns.org/api/v1/point/pointList?` +
+                `pointType=${pointquery.pointType}` +
+                `&rangeStartDate=${pointquery.rangeStartDate}` +
+                `&rangeEndDate=${pointquery.rangeEndDate}` +
+                `&usedType=${pointquery.usedType}` +
+                `&pointHistoryType=${pointquery.pointHistoryType}` +
+                `&page=0&size=10`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(res => res.json())
                 .then(data => {
                     setPointListData(data.result.pointDetailOutList)
                     setATotalPoint(data.result.atotalPoint)
                     setUTotalPoint(data.result.utotalPoint)
-                }).catch(error=> console.log(error))
-            })
-            getPointList()
+                }).catch(error => console.log(error))
+        })
+        getPointList()
 
-        }
 
-    },[pointquery])
-    
+    }, [pointquery, token])
+
 
     // // 더미 데이터 테스트 
     // const [pointData, setPointData] = useState<PointType[]>();
@@ -65,16 +64,18 @@ export default function PointHistory({token,pointquery}:{token:string, pointquer
     //     getData();
     // },[])
 
-  return (
-    <div className={style.point_wrap}>
-        <PointHistoryTotal aTotalPoint={aTotalPoint} uTotalPoint={uTotalPoint} />
-        <ul className={style.point_history}>
-            {pointListData ? pointListData.map((item: PointType) => 
-                (<PointHistoryDetail data = {item} token={token}/>
-            )) : null
-            
-            }
-        </ul>
-    </div>
-  )
+    return (
+        <div className={style.point_wrap}>
+            <PointHistoryTotal aTotalPoint={aTotalPoint} uTotalPoint={uTotalPoint} />
+            <ul className={style.point_history}>
+                {pointListData?.length > 0 ? (
+                    pointListData.map((item: PointType) => (
+                        <PointHistoryDetail key={item.pointId} data={item} token={token} pointquery={pointquery} />
+                    ))
+                ) : (
+                    <p>No data available.</p>
+                )}
+            </ul>
+        </div>
+    );
 }

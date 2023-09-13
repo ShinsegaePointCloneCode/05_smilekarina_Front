@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import axios from 'axios';
 import { useSession } from 'next-auth/react';
 
 interface Branch {

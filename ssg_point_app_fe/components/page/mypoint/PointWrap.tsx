@@ -11,15 +11,9 @@ export default function PointWrap({pointquery}:{pointquery:PointSortType}) {
   const session = useSession();
   const token = session.data?.user.token
 
-  const pathname = usePathname();
-
   return (
     <div className={style.point_wrap}>
-      {pathname === "/mypoint/pntHistory" ? 
-        <PointHistory token={token} pointquery ={pointquery}/> :
-        <PointHistory token={token} pointquery ={pointquery}/>
-      }
-      
+        <PointHistory token={token} pointquery ={pointquery}/> 
     </div>
   )
 }

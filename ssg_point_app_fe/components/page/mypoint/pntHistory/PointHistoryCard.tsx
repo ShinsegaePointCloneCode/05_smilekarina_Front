@@ -33,6 +33,7 @@ export default async function PointHistoryCard({token}:{token:string}) {
   const formnextextdate = dateFormat({formatdate : extNextdate});
 
   useEffect(()=>{
+    if(!token) return 
     const getData = async () => {
       await fetch("https://smilekarina.duckdns.org/api/v1/point/pointinfo",
       {
@@ -52,7 +53,7 @@ export default async function PointHistoryCard({token}:{token:string}) {
         }).catch(error=> console.log(error))
   }
   getData();
-  },[])
+  },[token])
   console.log(pointInfo)
 
   return (

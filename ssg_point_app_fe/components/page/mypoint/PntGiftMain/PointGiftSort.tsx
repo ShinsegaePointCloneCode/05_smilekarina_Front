@@ -8,10 +8,7 @@ export default function PointGiftSort({giftquery,setGiftquery}:{giftquery:GiftSo
     const router = useRouter();
 
     const giftSortTypeHandler = (e:React.ChangeEvent<HTMLSelectElement>)=>{
-      setGiftquery({
-        ...giftquery,
-        giftGb: e.target.value,
-      })
+      setGiftquery({giftGb: e.target.value})
     }
 
   return (
