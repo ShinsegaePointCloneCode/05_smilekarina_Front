@@ -1,6 +1,5 @@
 import { PointType } from '@/types/PointType'
 import React, { useEffect, useState } from 'react'
-import style from './MyPoint.module.css'
 import { usePathname } from 'next/navigation'
 import { GiftSortType } from './PointGiftMainList'
 import PntHistoryShow from '../PntHistoryShow'

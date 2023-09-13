@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import React, { useEffect, useState } from 'react'
 import style from "../MyPoint.module.css"
 
@@ -34,7 +34,7 @@ export default async function PointHistoryCard({token}:{token:string}) {
 
   useEffect(()=>{
     if(!token) return 
-    const getData = async () => {
+    const getData = (async () => {
       await fetch("https://smilekarina.duckdns.org/api/v1/point/pointinfo",
       {
         method: "GET",
@@ -51,7 +51,7 @@ export default async function PointHistoryCard({token}:{token:string}) {
             extNextPoint : data.result.extNextPoint})
           // console.log(data)
         }).catch(error=> console.log(error))
-  }
+  })
   getData();
   },[token])
   // console.log(pointInfo)

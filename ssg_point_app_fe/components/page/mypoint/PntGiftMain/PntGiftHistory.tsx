@@ -3,7 +3,6 @@ import { PointType } from '@/types/PointType';
 import React, { useEffect, useState } from 'react'
 import style from "../MyPoint.module.css"
 import PointHistoryTotal from '../PointHistoryTotal';
-import PointHistoryDetail from '../PointHistoryDetail';
 import { GiftSortType } from './PointGiftMainList';
 import PointgiftHistoryDetail from './PointgiftHistoryDetail';
 

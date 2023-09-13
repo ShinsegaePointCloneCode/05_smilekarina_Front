@@ -5,46 +5,64 @@ import { SelectFranchiseType } from '@/types/SelectFranchiseType';
 import { SelectBranchType } from '@/types/SelectBranchType';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { D000000000, E000000000, E000000001 } from '@/datas/selectFranchiseData';
+import { E200006892 } from '@/datas/selectBranchData';
+
+const FranchiseMapping: {
+  [key: string]: SelectFranchiseType[];
+} = {
+  E000000000: E000000000,
+  D000000000: D000000000,
+  E000000001: E000000001,
+};
+
+const branchMapping: {
+  [key: string]: SelectBranchType[];
+} = {
+  E200006892: E200006892,
+};
+
 
 export default function SavePoint() {
 
   // 대형 분류 선택 및 세부매장 데이터 받아오기 
   const [select, setSelect] = useState<string>("E000000000");
-  const [selectresult, setSelectresult] = useState<SelectFranchiseType[]>([] as SelectFranchiseType[]);
+  let currentFranciseData: SelectFranchiseType[] = FranchiseMapping[select] || [];
 
   const handelSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelect(e.target.value)
   }
 
-  useEffect(() => {
-    // console.log("open")
-    const getFranchise = (() => {
-      fetch(`http://localhost:9999/${select}`)
-        .then(res => res.json())
-        .then(data => data ? setSelectresult(data) : console.log("error"))
-    })
-    getFranchise();
+  // useEffect(() => {
+  //   // console.log("open")
+  //   const getFranchise = (() => {
+  //     fetch(`http://localhost:9999/${select}`)
+  //       .then(res => res.json())
+  //       .then(data => data ? setSelectresult(data) : console.log("error"))
+  //   })
+  //   getFranchise();
 
-  }, [select])
+  // }, [select])
 
   // 세부매장 선택 및 가맹점 데이터 받아오기 
   const [select2, setSelect2] = useState<string>("E200006892");
-  const [selectresult2, setSelectresult2] = useState<SelectBranchType[]>([] as SelectBranchType[]);
+  // const [selectresult2, setSelectresult2] = useState<SelectBranchType[]>([] as SelectBranchType[]);
+  let currentBranchData: SelectBranchType[] = branchMapping[select2] || [];
 
   const handelSelect2 = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelect2(e.target.value)
   }
 
-  useEffect(() => {
-    // console.log("open2")
-    const getFranchise = (() => {
-      fetch(`http://localhost:9999/${select2}`)
-        .then(res => res.json())
-        .then(data => data ? setSelectresult2(data) : console.log("error"))
-    })
-    getFranchise();
+  // useEffect(() => {
+  //   // console.log("open2")
+  //   const getFranchise = (() => {
+  //     fetch(`http://localhost:9999/${select2}`)
+  //       .then(res => res.json())
+  //       .then(data => data ? setSelectresult2(data) : console.log("error"))
+  //   })
+  //   getFranchise();
 
-  }, [select2])
+  // }, [select2])
 
 
   const [savePointBranchId, setSavePointBranchId] = useState<string>("1234");
@@ -121,7 +139,7 @@ export default function SavePoint() {
         <div className={style.select_box}>
           <select title='가맹점선택' onChange={handelSelect2}>
             {
-              selectresult ? selectresult.map((data: SelectFranchiseType) => (
+              currentFranciseData ? currentFranciseData.map((data: SelectFranchiseType) => (
                 <option value={data.code}>{data.name}</option>
               )) : null
             }
@@ -136,7 +154,7 @@ export default function SavePoint() {
           <div className={style.select_box}>
             <select title='지점선택' name='branch' onChange={handelSavePointBranch}>
               {
-                selectresult2 ? selectresult2.map((data: SelectBranchType) => (
+                currentBranchData ? currentBranchData.map((data: SelectBranchType) => (
                   <option value={data.id} >{data.name}</option>
                 )) : null
               }
