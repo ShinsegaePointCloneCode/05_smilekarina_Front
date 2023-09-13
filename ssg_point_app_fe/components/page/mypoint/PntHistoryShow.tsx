@@ -32,20 +32,10 @@ export default function PntHistoryShow({data}:{data:PointType}) {
     const date = new Date(data.showDate);
     const formdate = dateFormat({formatdate: date});
   
-    const maskingID = (value : string) => {
-      if (value.length === 2) {
-        return value.replace(/(?<=.{1})./gi, '*');
-      } else if (value.length > 2) {
-        return value.replace(/(?<=.{2})./gi, '*');
-      } else {
-        return value;
-      }
-    };
-  
-    const Name = data?.otherName
+    const Name = data.otherName !== null ? maskingName(data?.otherName) : null
     // const maskedName = maskingName(Name)
   
-    const ID = data.otherId
+    const ID = data.otherId !== null ? maskingID(data?.otherId) : null
     // const maskedId = maskingID(ID)
 
   return (
