@@ -94,7 +94,7 @@ export const options: NextAuthOptions = {
 
                 } catch (e) {
                     console.log(e);
-                    console.log("errasdadsor");
+                    
                     return false;  // If there's an error, reject the sign in
                 }
             }

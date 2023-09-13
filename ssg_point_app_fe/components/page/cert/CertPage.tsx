@@ -20,7 +20,25 @@ export default function CertPage() {
         phone: '',
         gender: 'M',
         nationality: 'L',
+        agree1: false,
+        agree2: false,
+        agree3: false,
+        agree4: false,
     });
+
+    const handleAllCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { checked } = e.target;
+        setCertData(prevData => ({
+            ...prevData,
+            agree1: checked,
+            agree2: checked,
+            agree3: checked,
+            agree4: checked
+        }));
+    }
+    const isAllChecked = (): boolean => {
+        return !!certData.agree1 && !!certData.agree2 && !!certData.agree3 && !!certData.agree4;
+    }
 
     useEffect(() => {
         setRoutePath(pathname);
@@ -218,15 +236,15 @@ export default function CertPage() {
                                     <h3 className={styles.tit}> 휴대전화 인증 약관 </h3>
                                     <div className={styles.agree_all_chk}>
                                         <div className={styles.chk_box}>
-                                            <input id="agreeAllChk" type="checkbox" />
+                                            <input id="agreeAllChk" type="checkbox" checked={isAllChecked()} onChange={handleAllCheck} />
                                             <label htmlFor="agreeAllChk">모든 약관에 동의합니다.</label>
                                         </div>
                                     </div>
                                     <ul className={styles.agree_list}>
                                         <li className={styles.agree_form}>
                                             <div className={styles.chk_box}>
-                                                <input id="agree00" type="checkbox" className={styles.check_list_js} />
-                                                <label htmlFor="agree00">
+                                                <input id="agree1" type="checkbox" className={styles.check_list_js} name='agree1' checked={!!certData.agree1} onChange={(e) => handleOnChange(e, certData, setCertData)} />
+                                                <label htmlFor="agree1">
                                                     <span className={styles.in_box}>[필수] 휴대전화 인증 서비스 이용약관</span>
                                                 </label>
                                             </div>
@@ -236,8 +254,8 @@ export default function CertPage() {
                                         </li>
                                         <li className={styles.agree_form}>
                                             <div className={styles.chk_box}>
-                                                <input id="agree01" type="checkbox" className={styles.check_list_js} />
-                                                <label htmlFor="agree01">
+                                                <input id="agree2" type="checkbox" className={styles.check_list_js} name='agree2' checked={!!certData.agree2} onChange={(e) => handleOnChange(e, certData, setCertData)} />
+                                                <label htmlFor="agree2">
                                                     <span className={styles.in_box}>[필수] 고유식별정보 처리 동의</span>
                                                 </label>
                                             </div>
@@ -247,8 +265,8 @@ export default function CertPage() {
                                         </li>
                                         <li className={styles.agree_form}>
                                             <div className={styles.chk_box}>
-                                                <input id="agree02" type="checkbox" className={styles.check_list_js} />
-                                                <label htmlFor="agree02">
+                                                <input id="agree3" type="checkbox" className={styles.check_list_js} name='agree3' checked={!!certData.agree3} onChange={(e) => handleOnChange(e, certData, setCertData)} />
+                                                <label htmlFor="agree3">
                                                     <span className={styles.in_box}>[필수] 통신사 이용약관 동의</span>
                                                 </label>
                                             </div>
@@ -258,8 +276,8 @@ export default function CertPage() {
                                         </li>
                                         <li className={styles.agree_form}>
                                             <div className={styles.chk_box}>
-                                                <input id="agree03" type="checkbox" className={styles.check_list_js} />
-                                                <label htmlFor="agree03">
+                                                <input id="agree4" type="checkbox" className={styles.check_list_js} name='agree4' checked={!!certData.agree4} onChange={(e) => handleOnChange(e, certData, setCertData)} />
+                                                <label htmlFor="agree4">
                                                     <span className={styles.in_box}>[필수] 개인정보 수집/이용동의</span>
                                                 </label>
                                             </div>

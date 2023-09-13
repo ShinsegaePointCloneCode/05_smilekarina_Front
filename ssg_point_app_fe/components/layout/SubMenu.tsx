@@ -12,10 +12,11 @@ const menuDataMapping: {
 } = {
   mypoint: myPointMenuData,
   event: eventMenuData,
+  mybenefit: mybenefitMenuData,
   myinfo: memberMenuData,
   mypage: mypageMenuData,
   mylounge: myloungeMenuData,
-  mybenefit: mybenefitMenuData,
+  
   
   // 다른 pathname을 추가하려면 여기에 추가하세요.
   // 예: anotherPath: anotherMenuData
