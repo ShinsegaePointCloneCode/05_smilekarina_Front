@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './FormArea.module.css'
 import { SignUpFormDataType } from '@/types/userDataType'
 import { useRouter } from 'next/navigation';
@@ -18,6 +18,8 @@ export default function FormArea() {
     const [modalContent, setModalContent] = useState<string>("");
     const [isView, setIsView] = useState<boolean>(false);
     const [address, setAddress] = useState<DaumAddressType>();
+    const [idChecked, setIdChecked] = useState<boolean>(false);
+    const loginIdRef = useRef<HTMLInputElement>(null);
     const [signupData, setSignupData] = useState<SignUpFormDataType>({
         loginId: '',
         password: '',
@@ -50,6 +52,13 @@ export default function FormArea() {
     }
 
     const handleSignUp = async () => {
+        if (!idChecked) {
+            setModalContent("아이디 중복 확인을 해주세요.");
+            onOpen();
+            loginIdRef.current?.focus();  // 아이디 입력 필드에 포커스
+            return;
+        }
+
         
         const {
             loginId,
@@ -104,6 +113,7 @@ export default function FormArea() {
                 localStorage.setItem('tempDm', data.result.dm.toString());
                 localStorage.setItem('tempTm', data.result.tm.toString());
             }
+            router.push('/member/join/success')
         } catch (error) {
             console.error("Error sending POST request:", error);
         }
@@ -111,23 +121,24 @@ export default function FormArea() {
 
     const checkId = async () => {
         try {
-            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?loginId=${signupData.loginId}`)
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?loginId=${signupData.loginId}`);
             const data = await response.json();
             
             if (data.success) {
                 setModalContent("입력하신 아이디는 사용이 가능 합니다.");
+                setIdChecked(true);  // 아이디 중복 확인 완료
             } else {
                 setModalContent("입력하신 아이디는 사용이 불가능 합니다.");
+                setIdChecked(false); // 아이디 중복 확인이 되지 않음
             }
         } catch (error) {
             console.error("Error sending POST request:", error);
             setModalContent("ID 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+            setIdChecked(false);  // 아이디 중복 확인이 되지 않음
         }
         onOpen();
     }
+    
 
     const handleAllCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { checked } = e.target;
@@ -184,7 +195,6 @@ export default function FormArea() {
         }
     }, [address]);
 
-
     return (
         <div>
             <p></p>
@@ -200,7 +210,7 @@ export default function FormArea() {
                         <div className={styles.input_box}>
                             <input type="text" id="loginId" name='loginId'
                                 placeholder='영문, 숫자 6~20자리 입력해주세요.' title="회원 가입을 위한 아이디 입력"
-                                onChange={handleOnChange} />
+                                onChange={handleOnChange} ref={loginIdRef}  />
                         </div>
                         <div className={styles.btn_box}>
                             <button className={styles.btn2} onClick={checkId} > 중복확인 </button>
@@ -317,7 +327,7 @@ export default function FormArea() {
                         onClick={() => {
                             
                             handleSignUp();
-                            router.push('/member/join/success')
+                            
                         }}>확인</button>
                 </div>
             </div>

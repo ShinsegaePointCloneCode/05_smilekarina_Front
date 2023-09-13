@@ -16,16 +16,16 @@ export default function CouponDownAll({couponlist} : {couponlist : CouponType[]}
         return coupon.couponId
       })
 
-      console.log(res)
+      // console.log(res)
       setCouponList(res)
-    console.log(couponlist)
+    // console.log(couponlist)
   },[])
 
   const session = useSession();
   const router = useRouter();
 
   const handleCouponDownAll= ()=>{
-      console.log("전체 다운 POST 요청하기")
+      // console.log("전체 다운 POST 요청하기")
       const token = session.data?.user.token
 
       const res = fetch("https://smilekarina.duckdns.org/api/v1/benefits/couponDownAll",
@@ -39,7 +39,7 @@ export default function CouponDownAll({couponlist} : {couponlist : CouponType[]}
               })
               .then(res=> res.json())
               .then(data => data.success? router.push('/benefits/myCoupon') : null)
-      console.log(res)
+      // console.log(res)
 
     }
 

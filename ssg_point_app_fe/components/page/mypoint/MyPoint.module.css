@@ -399,3 +399,18 @@
     top: 0;
     opacity: .6;
 }
+.barcode {
+    width: 40px;
+    height: 20px;
+    border-radius: 4px;
+    margin-left: auto;
+}
+.gft_total{
+    text-align: right;
+    width: 100%;
+    display: table;
+    height: 50px;
+}
+.point_wrap .gft_total>p span {
+    padding: 0 8px 0 0;
+}

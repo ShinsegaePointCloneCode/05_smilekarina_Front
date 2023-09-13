@@ -1,15 +1,16 @@
-import React, { Dispatch, useState } from 'react'
+import React, { Dispatch, useEffect, useState } from 'react'
 import style from './PntGiftMainsub.module.css'
 import { handleOnChange } from '@/handler/CertHandle';
 import { useSession } from 'next-auth/react';
 import { OtherUserInfo } from './PntGiftContent';
 
 
-export default function PntGiftsubSerchUser({otherUserInfo, setOtherUserInfo} : 
-  {otherUserInfo: OtherUserInfo, setOtherUserInfo : Dispatch<React.SetStateAction<OtherUserInfo>>}) {
+export default function PntGiftsubSerchUser({token, otherUserInfo, setOtherUserInfo} : 
+  {token:string, otherUserInfo: OtherUserInfo, setOtherUserInfo : Dispatch<React.SetStateAction<OtherUserInfo>>}) {
 
   const [phonNumber,setPhoneNumber] = useState<string>();
   const [otherName, setOtherName] = useState<string>();
+  const [checkUser,setCheckUser] = useState<boolean>(false);
 
   const handlePhoneNumber = (e:React.ChangeEvent<HTMLInputElement>) => {
     setPhoneNumber(e.target.value)
@@ -19,27 +20,37 @@ export default function PntGiftsubSerchUser({otherUserInfo, setOtherUserInfo} :
     setOtherName(e.target.value)
   }
 
-  // const session = useSession();
-  // const SerchUserhandler = (e:any) => {
-  //   e.preventDefault();
-  //   const token = session.data?.user.token
-  //   const res = fetch("https://smilekarina.duckdns.org/api/v1/user/pointpwdChg",
-  //           {
-  //               method: "POST",
-  //               headers: {
-  //                   "Content-Type": "application/json",
-  //                   "Authorization": `Bearer ${token}`
-  //               },
-  //               body: JSON.stringify({ userName: otherName, phone: phonNumber})
-  //           })
-  //           .then(res => res.json())
-  //           .then(data => data.success ? console.log('good') : console.log("error"))
-  //       console.log(res)
-  // }
+  // console.log(token)
+  const SerchUserhandler = (e:any) => {
+    e.preventDefault();
+    setCheckUser(true)
+  }
+
+  useEffect(()=>{
+    if(token){
+      // console.log(token,otherName,phonNumber)
+      const getUser = (()=>{
+        fetch("https://smilekarina.duckdns.org/api/v1/user/checkuser",{
+          method :"POST",
+          headers :{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body : JSON.stringify({userName:otherName, phone:phonNumber})
+        }).then(res=>res.json())
+        .then(data => data.success? setOtherUserInfo({otherUserName : data.result.userName,
+          otherUserId : data.result.userLoginId,
+          result : true}) :console.log("error"))
+      })
+      getUser();
+      setCheckUser(false)
+    }
+  },[checkUser])
+    
 
 
   return (
-    <form >
+    <form onSubmit={SerchUserhandler}>
       <input 
         type="text" 
         id="otherphoneNumber" 

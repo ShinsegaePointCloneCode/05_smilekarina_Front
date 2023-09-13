@@ -94,7 +94,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "포인트 내역",
-        menuUrl: "/",
+        menuUrl: "/mypoint/pntHistory",
         menuIcon: "/images/sideMenu/menu_00.png"
     },
     {
@@ -102,7 +102,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "포인트 카드 관리",
-        menuUrl: "/",
+        menuUrl: "/mypoint/cardManage",
         menuIcon: "/images/sideMenu/menu_01.png"
     },
     {
@@ -110,7 +110,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "포인트 선물",
-        menuUrl: "/",
+        menuUrl: "/mypoint/pntGiftMain",
         menuIcon: "/images/sideMenu/menu_02.png"
     },
     {
@@ -118,7 +118,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "제휴포인트 카드 관리",
-        menuUrl: "/",
+        menuUrl: "/mypoint/regAffiliatePntCard",
         menuIcon: "/images/sideMenu/menu_06.png"
     },
     {
@@ -126,7 +126,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "포인트 전환",
-        menuUrl: "/",
+        menuUrl: "/mypoint/convertPntList",
         menuIcon: "/images/sideMenu/menu_03.png"
     },
     {
@@ -134,7 +134,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "영수증으로 적립",
-        menuUrl: "/",
+        menuUrl: "/mypoint/savePoint",
         menuIcon: "/images/sideMenu/menu_04.png"
     },
     {
@@ -142,7 +142,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "포인트 비밀번호 변경",
-        menuUrl: "/",
+        menuUrl: "/mypoint/chgPntPwdCert",
         menuIcon: "/images/sideMenu/menu_05.png"
     },
     {
@@ -222,7 +222,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 라운지",
         menuName: "자주 찾는 매장",
-        menuUrl: "/",
+        menuUrl: "/mylounge/regularstore",
         menuIcon: "/images/sideMenu/menu_24.png"
     },
     {
@@ -230,7 +230,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 회원정보",
         menuName: "광고정보 수신 관리",
-        menuUrl: "/",
+        menuUrl: "/myinfo/infoRcvAgree",
         menuIcon: "/images/sideMenu/menu_31.png"
     },
     {
@@ -238,7 +238,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 회원정보",
         menuName: "서비스 동의관리",
-        menuUrl: "/",
+        menuUrl: "/myinfo/serviceAgree",
         menuIcon: "/images/sideMenu/menu_34.png"
     },
     {
@@ -246,7 +246,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 회원정보",
         menuName: "회원정보 수정",
-        menuUrl: "/",
+        menuUrl: "/myinfo/cert",
         menuIcon: "/images/sideMenu/menu_30.png"
     },
     {
@@ -254,7 +254,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 회원정보",
         menuName: "비밀번호 변경",
-        menuUrl: "/",
+        menuUrl: "/myinfo/changePwd",
         menuIcon: "/images/sideMenu/menu_32.png"
     },
     {
@@ -262,7 +262,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 회원정보",
         menuName: "회원 탈퇴",
-        menuUrl: "/",
+        menuUrl: "/withdrawal/leavePassword",
         menuIcon: "/images/sideMenu/menu_33.png"
     },
     

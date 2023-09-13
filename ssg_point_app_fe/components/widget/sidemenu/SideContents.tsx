@@ -7,6 +7,7 @@ import Menu from './Menu'
 import GetUsablePoint from '@/components/layout/GetUsablePoint'
 import Link from 'next/link'
 import { dateFormat } from '@/components/page/mypoint/PointFilter'
+import SnsLogin from '@/components/page/login/SnsLogin'
 
 
 export default function SideContents() {
@@ -143,6 +144,7 @@ export default function SideContents() {
           </button>
         </div>
       </nav>
+      <SnsLogin />
     </div>
   )
 }

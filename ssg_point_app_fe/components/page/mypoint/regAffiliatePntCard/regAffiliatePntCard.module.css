@@ -1,0 +1,49 @@
+.org_txt_box, .org_txt_box.pd_type2 {
+    padding: 40px 20px;
+}
+.org_txt_box .box_tit {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    word-break: keep-all;
+}
+.org_txt_box .box_tit strong {
+    font-weight: 500;
+    color: #ea035c;
+}
+.fc_pk {
+    color: #ea035c!important;
+}
+.org_txt_box .box_txt {
+    font-size: 14px;
+    line-height: 24px;
+    color: #767676;
+    word-break: keep-all;
+    padding: 8px 0 0 0;
+}
+.membership_introduce_box .membership_tab ul {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.membership_introduce_box .membership_tab ul li {
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center;
+    display: table;
+}
+.membership_introduce_box .membership_tab ul li.on button {
+    background: #fff3f8;
+    color: #d9044b;
+    border-bottom: 1px solid #d9044b;
+}
+.dl {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
