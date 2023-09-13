@@ -34,7 +34,7 @@ export default function CardBox() {
                 </>
                 : null}
           </div>
-          {pathname === "/mypoint/pntHistory"?<PointHistoryCard/> :
+          {pathname === "/mypoint/pntHistory"?<PointHistoryCard token={token}/> :
             pathname === "/mypoint/cardManage" ? <CardBoxContent/> : null}
       </div>
     </div>

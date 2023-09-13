@@ -1,6 +1,7 @@
 import { PointType } from '@/types/PointType'
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './MyPoint.module.css'
+import { usePathname } from 'next/navigation'
 
 // 날짜 변경 함수
 export function dateFormat({formatdate}:{formatdate : Date}){
@@ -30,12 +31,58 @@ export function maskingID (value : string) {
   }
 };
 
-export default function PointHistoryDetail({data}:{data : PointType}) {
-  const date = new Date(data.createdDate);
-  const formdate = dateFormat({formatdate: date});
+export default function PointHistoryDetail({data,token}:{data : PointType,token:string}) {
 
+  console.log(data)
 
   
+  const pathname = usePathname();
+
+  useEffect(()=>{
+    if (pathname === "/mypoint/pntHistory"){
+      const getPointDetail = (()=>{
+         fetch(`https://smilekarina.duckdns.org/api/v1/point/pointListDetail?pointId=${data.pointId}&pointType=${data.pointType}`,{
+          method : "GET",
+          headers : {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+          }
+        }).then(res => res.json())
+        .then(result => {
+          data.franchiseName = result.result.franchiseName
+          data.addDetailDesc = result.result.addDetailDesc
+          data.receiptNumber = result.result.receiptNumber
+          data.messageOnOff = result.result.messageOnOff
+          data.giftType = result.result.giftType
+          data.otherName = result.result.otherName
+          data.otherId = result.result.otherId
+          data.giftId = result.result.giftId
+         }).catch(error=>console.log(error))
+      })
+      getPointDetail()
+
+    }else if(pathname === "/mypoint/pntGiftMain"){
+      const getPointDetail = (()=>{
+         fetch(`https://smilekarina.duckdns.org/api/v1/point/pointGiftListDetail?pointId=${data.pointId}`,{
+          method : "GET",
+          headers : {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+          }
+        }).then(res => res.json())
+        .then(result => {
+          data.used = result.result.used
+          data.pointType = result.result.pointType
+         }).catch(error=>console.log(error))
+      })
+      getPointDetail()
+    }
+
+  },[])
+  
+  const date = new Date(data.showDate);
+  const formdate = dateFormat({formatdate: date});
+
   const maskingID = (value : string) => {
     if (value.length === 2) {
       return value.replace(/(?<=.{1})./gi, '*');
@@ -46,11 +93,11 @@ export default function PointHistoryDetail({data}:{data : PointType}) {
     }
   };
 
-  const Name = data.giftName 
-  const maskedName = maskingName(Name)
+  const Name = data?.otherName
+  // const maskedName = maskingName(Name)
 
-  const ID = data.giftSenderId
-  const maskedId = maskingID(ID)
+  const ID = data.otherId
+  // const maskedId = maskingID(ID)
 
   return (
     <li>
@@ -73,11 +120,11 @@ export default function PointHistoryDetail({data}:{data : PointType}) {
         {data.pointType === "선물" || data.pointType === "선물사용취소" ?
           <p className={style.p_location}>          
             <span className={style.sub_txt1}>{data.giftType === "수락" && data.used === "적립" ? "받은선물" : "보낸선물"} : {data.giftType}</span>
-            <span className={style.name}>{maskedName} {maskedId}</span>
+            <span className={style.name}>{Name} {ID}</span>
           </p> 
           :
           <p className={style.p_location}>
-            {data.franchiseeName} <br />
+            {data.franchiseName} <br />
             {data.addDetailDesc !== "" ? <span className={style.sub_txt0}>{data.addDetailDesc}</span> : null}
           </p>
         }
@@ -85,7 +132,7 @@ export default function PointHistoryDetail({data}:{data : PointType}) {
           {/* 날짜 출력 */}
           <p className={style.p_use_date}>{formdate}</p>
           {/* 메시지 보기 or 영수증 보기 버튼 출력 */}
-          {data.messageOnOff === "ON" ? 
+          {data.messageOnOff ? 
             <button className={style.view_btn}>메시지보기</button> :
              data.receiptNumber !== null ?
              <button className={style.view_btn}>영수증 보기</button> :

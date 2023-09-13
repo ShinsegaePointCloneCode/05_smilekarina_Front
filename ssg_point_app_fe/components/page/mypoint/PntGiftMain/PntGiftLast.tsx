@@ -42,7 +42,7 @@ export default function PntGiftLast() {
                 }
             })
             .then(res => res.json())
-            .then(data => setPntGift({giftId: data.result.giftId,
+            .then(data => data.result !==null ? setPntGift({giftId: data.result.giftId,
                 senderLoginId: data.result.senderLoginId,
                 senderName: data.result.senderName,
                 point: data.result.point,
@@ -50,7 +50,7 @@ export default function PntGiftLast() {
                 giftImage: data.result.giftImage,
                 createdDate: data.result.createdDate,
                 result : true
-            })).catch(error=> console.log(error))
+            }):console.log("good")).catch(error=> console.log(error))
         })
         GiftLast()
     },[])

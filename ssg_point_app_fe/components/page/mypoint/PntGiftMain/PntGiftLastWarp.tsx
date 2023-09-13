@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './PntGift.module.css'
 import { PntGiftType } from './PntGiftLast'
-import { dateFormat } from '../PointHistoryDetail'
+import { dateFormat, maskingID, maskingName } from '../PointHistoryDetail'
 
 export default function PntGiftLastWarp({pntGift,setPntGift, token}:{pntGift : PntGiftType,setPntGift: React.Dispatch<React.SetStateAction<PntGiftType>>
     ,token:string}) {
@@ -54,7 +54,7 @@ export default function PntGiftLastWarp({pntGift,setPntGift, token}:{pntGift : P
             </p>
             <div className={style.message_box}>
                 <div className={style.cnt0}>
-                    <p className={style.sender}>보낸사람 : <strong>{pntGift.senderName}(ID:{pntGift.senderLoginId})</strong></p>
+                    <p className={style.sender}>보낸사람 : <strong>{maskingName(pntGift.senderName)}(ID:{maskingID(pntGift.senderLoginId)})</strong></p>
                     <div className={style.txt_cnt}>
                         <p className={style.date}>{dateFormat({formatdate:date})}</p>
                         <p className={style.message_view}>메시지보기</p>
