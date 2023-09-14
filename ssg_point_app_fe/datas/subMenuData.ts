@@ -51,7 +51,7 @@ export const myPointMenuData: MenuType[] = [
     {
         id : 7,
         name : "포인트 비밀번호 변경",
-        url : "/mypoint/chgPntPwdCert"
+        url : ["/mypoint/chgPntPwdCert","/mypoint/chgPntPwd"]
     },
 ]
 export const memberMenuData: MenuType[] = [
