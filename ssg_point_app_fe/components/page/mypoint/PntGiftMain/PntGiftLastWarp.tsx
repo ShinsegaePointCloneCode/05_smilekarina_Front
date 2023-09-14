@@ -1,7 +1,8 @@
 import React from 'react'
 import style from './PntGift.module.css'
 import { PntGiftType } from './PntGiftLast'
-import { dateFormat, maskingID, maskingName } from '../PointHistoryDetail'
+import { dateFormat} from '../PointHistoryDetail'
+import { maskingID, maskingName } from '../PntHistoryShow'
 
 export default function PntGiftLastWarp({pntGift,setPntGift, token}:{pntGift : PntGiftType,setPntGift: React.Dispatch<React.SetStateAction<PntGiftType>>
     ,token:string}) {
