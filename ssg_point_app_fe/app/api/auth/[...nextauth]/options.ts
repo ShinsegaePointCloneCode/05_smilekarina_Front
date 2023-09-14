@@ -91,6 +91,7 @@ export const options: NextAuthOptions = {
                     // }
                     console.log(account)
                     
+                    
 
 
                 } catch (e) {
