@@ -25,7 +25,8 @@ export default function Roulette() {
         setRotateDegree(-totalDegree);
 
         const finalDegree = (3600 + 90 - randomDegree) % 360;
-        let result;
+        let result: number = 0;
+
 
         if (finalDegree >= 0 && finalDegree < 60) {
             result = 1;
@@ -43,7 +44,7 @@ export default function Roulette() {
 
         setRouletteResult(result);
         
-
+        setTimeout(async () => {
         // 서버에 결과 전송
         try {
             if (!session.data?.user.token) {
@@ -80,6 +81,7 @@ export default function Roulette() {
             onOpen();
             
         }
+    }, 5000);  // 5초 뒤에 실행됩니다.
     };
     return (
         <div>
