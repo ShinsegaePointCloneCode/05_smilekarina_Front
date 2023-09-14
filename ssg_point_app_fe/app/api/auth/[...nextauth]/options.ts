@@ -73,22 +73,23 @@ export const options: NextAuthOptions = {
 
             if (account?.provider === "kakao" || account?.provider === "naver") {
                 try {
-                    const res = await fetch("https://smilekarina.duckdns.org/api/v1/user/oauth", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            provider: account?.provider,
-                            id: account?.providerAccountId
-                        })
-                    });
-                    const userInfo = await res.json();
-                    if (userInfo) {
-                        (user as any).userName = userInfo.result.userName;
-                        (user as any).token = userInfo.result.token;
-                        (user as any).uuid = userInfo.result.uuid;
-                    }
+                    // const res = await fetch("https://smilekarina.duckdns.org/api/v1/user/oauth", {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'Content-Type': 'application/json',
+                    //     },
+                    //     body: JSON.stringify({
+                    //         provider: account?.provider,
+                    //         id: account?.providerAccountId
+                    //     })
+                    // });
+                    // const userInfo = await res.json();
+                    // if (userInfo) {
+                    //     (user as any).userName = userInfo.result.userName;
+                    //     (user as any).token = userInfo.result.token;
+                    //     (user as any).uuid = userInfo.result.uuid;
+                    // }
+                    console.log(account)
                     
 
 

@@ -2,6 +2,14 @@ import React from 'react'
 import styles from './UserInfoArea.module.css'
 
 export default function UserInfoArea(props: { phone?: string, address?: string, email?: string, agreeEmail?: boolean, Letter?: boolean, Dm?: boolean, Tm?: boolean }) {
+
+    const getCurrentDate = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // JavaScript의 month는 0부터 시작하므로 +1을 해줍니다.
+        const date = String(today.getDate()).padStart(2, '0');
+        return `${year}.${month}.${date}`;
+    }
     
     const maskPhoneNumber = (phone: string | undefined) => {
         if (!phone) return "없음";
@@ -64,7 +72,7 @@ export default function UserInfoArea(props: { phone?: string, address?: string, 
                     </dl>
                 </div>
                 <p className={styles.tit}> 광고정보 수신동의
-                    <em className={`${styles.not_italic}`}>동의일자 2023.08.24</em>
+                    <em className={`${styles.not_italic}`}>동의일자 {getCurrentDate()}</em>
                 </p>
                 <div className={`${styles.user_info} ${styles.item_col}`}>
                     <dl>
