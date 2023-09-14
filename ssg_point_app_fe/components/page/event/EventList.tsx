@@ -1,53 +1,77 @@
-'use client'
-import React, { useEffect, useMemo, useState } from 'react'
-import EventListCard from './EventListCard';
+"use client"
+import React, { useEffect, useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { EventType } from '@/types/eventype';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import modulestyle from './Event.module.css'
+import SelectSortType from './SelectSortType';
+import EventListWarp from './EventListWarp';
 
-
-// export default async function EventList(events : any) {
 export default function EventList() {
 
+    const [orderType, setorderType] = useState<Number>(30);
     const path = usePathname();
     const query = useSearchParams();
+    const [eventData, setEventData] = useState<EventType[]>([] as EventType[]);
 
-    const [eventData, setEventData] = useState<EventType[]>();
     useEffect(() => {
-        const getData = async () => {
-            await fetch(`http://localhost:9999/event?_sort=${query.get('_sort')}&_order=${query.get('_order')}` ,{next: {revalidate : 1800}} ) 
-            .then(res => res.json())
-            .then(data =>{
-                setEventData(data)
-                console.log(data)
-            })
-        }
+        const getData = (() => {
+
+            if (path === "/event/ingevent"){
+                fetch(`https://smilekarina.duckdns.org/api/v1/event/ingevent/${orderType}?page=0&size=10`) 
+                .then(res => res.json())
+                .then(data =>{data.success ? setEventData(data.result.content) : console.log("error") 
+                })
+
+            }else if ( path === "/event/endevent"){
+                fetch(`https://smilekarina.duckdns.org/api/v1/event/endevent?page=0&size=10`) 
+                .then(res => res.json())
+                .then(data =>{data.success ? setEventData(data.result.content) : console.log("error") 
+                })
+
+            }else if (path === "/event/winevent"){
+                fetch(`https://smilekarina.duckdns.org/api/v1/event/winevents?page=0&size=10`) 
+                .then(res => res.json())
+                .then(data =>{data.success ? setEventData(data.result.content) : console.log("error") 
+                })
+
+            }
+
+        })
         getData();
-    }, [query]);
+    }, []);
 
+    useEffect(() => {
+        const getData = (() => {
 
-        
+            if (path === "/event/ingevent"){
+                fetch(`https://smilekarina.duckdns.org/api/v1/event/ingevent/${orderType}?page=0&size=10`) 
+                .then(res => res.json())
+                .then(data =>{data.success ? setEventData(data.result.content) : console.log("error") 
+                })
+
+            }else if ( path === "/event/endevent"){
+                fetch(`https://smilekarina.duckdns.org/api/v1/event/endevent?page=0&size=10`) 
+                .then(res => res.json())
+                .then(data =>{data.success ? setEventData(data.result.content) : console.log("error") 
+                })
+
+            }else if (path === "/event/winevent"){
+                fetch(`https://smilekarina.duckdns.org/api/v1/event/winevents?page=0&size=10`) 
+                .then(res => res.json())
+                .then(data =>{data.success ? setEventData(data.result.content) : console.log("error") 
+                })
+
+            }
+
+        })
+        getData();
+    }, [orderType,path, query]);
+
 
   return (
     <>
-    <div className={modulestyle.event_list}>
-    <ul>
-        {
-            eventData ? eventData.map((item: EventType) => 
-                (<EventListCard 
-                    key = {item.id}
-                    id = {item.id}
-                    img = {item.event_thumbnail}
-                    title = {item.eventHead}
-                    startdate = {item.event_start}
-                    enddate = {item.event_end}
-                />
-            )) : null
-        }
-    </ul>
-  </div>
-  </>
+        {path === "/event/ingevent"?<SelectSortType orderType= {orderType} setorderType={setorderType} /> :null}
+        
+        <EventListWarp orderType={orderType} eventData={eventData}/>
+    </>
   )
 }
-
-

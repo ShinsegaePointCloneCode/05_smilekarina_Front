@@ -14,7 +14,7 @@ export default function CouponContent({props}:{props:CouponType}) {
     const [couponNum, setCouponNum] = useState(props.couponNumber);
 
     const handlelDownOne = (e:any)=>{
-        console.log("Down")
+        // console.log("Down")
         const postdata = (async()=>{
             await fetch("https://smilekarina.duckdns.org/api/v1/benefits/myCoupon",{
                 method : "POST",
