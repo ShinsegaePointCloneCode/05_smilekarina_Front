@@ -1,0 +1,47 @@
+/* 마이 라운지 */
+.find_store_wrap01 {
+    padding: 0;
+}
+.find_store_wrap01 ul {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.find_store_wrap01 ul li {
+    -ms-flex: 1 1 50%;
+    flex: 1 1 50%;
+    text-align: center;
+}
+.find_store_wrap01 ul li.on button {
+    background: #fff3f8;
+    color: #d9044b;
+    font-weight: 500;
+    border-color: #d9044b;
+}
+.find_store_wrap01 ul li button {
+    display: block;
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #fbfbfb;
+    box-sizing: border-box;
+    /* padding-top: 10px; */
+    background: #fbfbfb;
+    font-size: 14px;
+    line-height: 24px;
+    color: #505050;
+    text-align: center;
+    border: none; /* 추가: 버튼의 기본 border를 제거 */
+    cursor: pointer; /* 추가: 버튼에 마우스를 올리면 포인터 모양으로 변경 */
+}
+.hidden {
+    overflow: hidden;
+    border: 0;
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    clip: rect(0,0,0,0);
+}

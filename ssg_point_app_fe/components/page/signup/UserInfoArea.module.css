@@ -1,0 +1,47 @@
+.user_info_cnt {
+    box-sizing: border-box;
+    padding: 0 20px 40px
+}
+.page_tit_cnt.no_line+.user_info_cnt {
+    padding-top: 0
+}
+.user_info_cnt>.tit {
+    border-bottom: 1px solid #000;
+    padding: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px
+}
+
+.user_info_cnt>.tit em {
+    display: block;
+    padding: 2px 0 0 0
+}
+
+.user_info_cnt .user_info {
+    padding: 16px 0 40px
+}
+
+.user_info_cnt .user_info:last-child {
+    padding-bottom: 0
+}
+
+.user_info_cnt .user_info dl {
+    padding-bottom: 16px
+}
+
+.user_info_cnt .user_info dl:last-child {
+    padding-bottom: 0
+}
+
+.user_info_cnt .user_info dd,.user_info_cnt .user_info dt {
+    font-size: 13px;
+    line-height: 21px
+}
+
+.user_info_cnt .user_info dd {
+    color: #767676
+}
+.not_italic {
+    font-style: normal;
+}

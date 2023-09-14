@@ -1,0 +1,124 @@
+.font {
+    font-family: Inter, Noto Sans KR, Malgun Gothic, 맑은고딕, 굴림, gulim, helvetica, arial, sans-serif;
+}
+
+
+.footer_box {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 26px 25px 35px 25px;
+    position: relative;
+    border-top: 1px solid #e5e5e5;
+    
+}
+
+.footer_box.pd_type0 {
+    padding: 24px 20px 95px
+}
+
+.footer_box .terms {
+    font-size: 0;
+    padding: 0 0 20px 0
+}
+
+.footer_box .terms li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20px 0 0
+}
+
+.footer_box .terms li:last-child {
+    margin: 0
+}
+
+.footer_box .terms li a {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 20px;
+    line-height: 20px
+}
+.footer_box .terms li span {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 20px;
+    line-height: 20px
+}
+
+.footer_box .terms li .fnt_color {
+    color: #d51e1e !important
+}
+
+.footer_box .info {
+    margin-bottom: 20px
+}
+
+.footer_box .info .tit {
+    font-size: 14px;
+    line-height: 1em;
+    padding: 0 0 10px 0;
+    display: block;
+    letter-spacing: .5px
+}
+
+.footer_box .info .tel {
+    color: #000;
+    font-size: 26px;
+    line-height: 1em;
+    font-weight: 500;
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: top;
+
+    
+
+
+}
+
+
+.footer_box .info .txt0 {
+    font-size: 12px;
+    line-height: 18px;
+    margin: -27px 0 0 16px;
+    display: inline-block;
+    
+}
+
+.footer_box .info .txt0 span {
+    margin: 0 3px 0 2px
+}
+
+.footer_box .txt {
+    font-size: 0;
+    padding: 3px 0 10px 0
+}
+
+.footer_box .txt span {
+    font-size: 12px;
+    line-height: 22px;
+    color: #767676;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 9px
+}
+
+.footer_box .txt span.txt0 {
+    display: block
+}
+
+.footer_box .copyright {
+    font-size: 10px;
+    line-height: 1em;
+    color: #767676
+}
+
+.footer_box .wa_mark {
+    position: absolute;
+    right: 15px;
+    top: 158px
+}
+
+.footer_box .wa_mark .wa {
+    width: 67px
+}

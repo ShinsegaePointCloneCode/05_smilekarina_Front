@@ -1,0 +1,543 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  
+  
+
+
+  "eventbanner": [
+    {
+      "id": 1,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_1.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3340&tabActiveIdx=0"
+    },
+    {
+      "id": 2,
+      "eventId": 30456,
+      "eventHead": "현대카드 파리바게뜨팩&영화팩 구독료 지원 이벤트",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-01",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_2.jpg",
+      "event_partner_id": "204",
+      "event_type": "응모형",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3147"
+    },
+    {
+      "id": 3,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_3.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3406&tabActiveIdx=0"
+    },
+    {
+      "id": 4,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_4.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/combine"
+    },
+    {
+      "id": 5,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_5.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=2251"
+    },
+    {
+      "id": 6,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_6.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/cscenter/notice/detail?boardNo=241&pageNo=1"
+    }
+  ],
+  "eventsubbanner": [
+    {
+      "id": 1,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_7.png",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/endevents/detail?eventNo=3472"
+    },
+    {
+      "id": 2,
+      "eventId": 30456,
+      "eventHead": "현대카드 파리바게뜨팩&영화팩 구독료 지원 이벤트",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-01",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_8.jpg",
+      "event_partner_id": "204",
+      "event_type": "응모형",
+      "event_url": "https://m.shinsegaepoint.com/couponPage"
+    },
+    {
+      "id": 3,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_9.png",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/couponPage"
+    },
+    {
+      "id": 4,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_10.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3046"
+    },
+    {
+      "id": 5,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_11.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=2383&tabActiveIdx=0"
+    },
+    {
+      "id": 6,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_12.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/club/momkids"
+    },{
+      "id": 7,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_13.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/club/parking"
+    },
+    {
+      "id": 8,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_14.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/club/beauty"
+    },
+    {
+      "id": 9,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_15.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://www.shinsegaegroupnewsroom.com/category/newsletter/"
+    }
+  ],
+  "event": [
+    {
+      "id": 1,
+      "eventId": 30444,
+      "eventHead": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230810/61f1891d-a549-48cf-bde7-f0daccb3ae3f.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3340&tabActiveIdx=0"
+    },
+    {
+      "id": 2,
+      "eventId": 30456,
+      "eventHead": "현대카드 파리바게뜨팩&영화팩 구독료 지원 이벤트",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-01",
+      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230803/a2014220-2f8e-438a-a34b-4bd890ea63cd.png",
+      "event_partner_id": "204",
+      "event_type": "응모형",
+      "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3147"
+    }
+  ],
+  "mypoint":{
+      "id" : 1,
+      "total_point" : 9,
+      "addpoint" : 3,
+      "extpoint" : 2,
+      "extNextpoint" : 1
+  },
+
+  "pointlist" : {
+      "isSuccess": true,
+      "code": "S00000",
+      "result": {
+          "aTotalPoint": "9",
+          "uTotalPoint": "1", 
+          "pntList": [
+              {
+                  "point_id" : 1,
+                  "point": 1,
+                  "used" : "적립",
+                  "pointType" : "선물사용취소", 
+                  "createdDate": "2023-08-19",
+                  "updatedDate": "2023-08-19",
+                  "franchiseeName": "", 
+                  "addDetailDesc": "",  
+                  "receiptNumber" : null,
+                  "messageOnOff" : "ON", 
+                  "giftType": "거절", 
+                  "giftName": "안선영",            
+                  "giftSenderId": "tjsdud1477", 
+                  "giftId" : 12121 
+              },
+              {
+                "point_id" : 2,
+                "point": 1,
+                "used" : "사용",
+                "pointType" :  "선물", 
+                "createdDate": "2023-08-19",
+                "updatedDate": "2023-08-19",
+                "franchiseeName": "", 
+                "addDetailDesc": "",  
+                "receiptNumber" : null,
+                "messageOnOff" : "ON", 
+                "giftType": "대기", 
+                "giftName": "안선영",            
+                "giftSenderId": "tjsdud1477", 
+                "giftId" : 12121 
+              },
+              {
+                "point_id" : 3,
+                "point": 1,
+                "used" : "적립",
+                "pointType" :  "선물", 
+                "createdDate": "2023-08-19",
+                "updatedDate": "2023-08-19",
+                "franchiseeName": "", 
+                "addDetailDesc": "",  
+                "receiptNumber" : null,
+                "messageOnOff" : "ON", 
+                "giftType": "수락", 
+                "giftName": "안선영",            
+                "giftSenderId": "tjsdud1477", 
+                "giftId" : 12121 
+            },
+            {
+              "point_id" : 4,
+              "point": 1,
+              "used" : "사용",
+              "pointType" :  "선물", 
+              "createdDate": "2023-08-19",
+              "updatedDate": "2023-08-19",
+              "franchiseeName": "", 
+              "addDetailDesc": "",  
+              "receiptNumber" : null,
+              "messageOnOff" : "OFF", 
+              "giftType": "대기", 
+              "giftName": "안선영",            
+              "giftSenderId": "tjsdud1477", 
+              "giftId" : 12121 
+            },
+              {
+                "point_id" : 5,
+                "point": 1,
+                "used" : "적립",
+                "pointType" :  "선물", 
+                "createdDate": "2023-08-19",
+                "updatedDate": "2023-08-19",
+                "franchiseeName": "", 
+                "addDetailDesc": "",  
+                "receiptNumber" : null,
+                "messageOnOff" : "OFF", 
+                "giftType": "수락", 
+                "giftName": "안선영",            
+                "giftSenderId": "tjsdud1477", 
+                "giftId" : 12121 
+              },
+              {
+                  "point_id" : 6,
+                  "point": 1,
+                  "used" : "사용",
+                  "pointType" :  "스마트영수증", 
+                  "createdDate": "2023-08-19",
+                  "updatedDate": "2023-08-19",
+                  "franchiseeName": "신세계 센텀시티점", 
+                  "addDetailDesc": "",  
+                  "receiptNumber" : "12131213342503020302", 
+                  "messageOnOff" : "OFF",
+                  "giftType": "", 
+                  "giftName": "",        
+                  "giftSenderId": "",
+                  "giftId" : "" 
+              },
+              {
+                "point_id" : 7,
+                "point": 1,
+                "used" : "적립",
+                "pointType" :  "출석", 
+                "createdDate": "2023-08-19",
+                "updatedDate": "2023-08-19",
+                "franchiseeName": "신세계포인트닷컴", 
+                "addDetailDesc": "[APP] 출석체크 포인트 지급",  
+                "receiptNumber" : null,
+                "messageOnOff" : "OFF",
+                "giftType": "", 
+                "giftName": "",        
+                "giftSenderId": "",
+                "giftId" : "" 
+            },
+            {
+              "point_id" : 8,
+              "point": 1,
+              "used" : "적립",
+              "pointType" :  "룰렛", 
+              "createdDate": "2023-08-19",
+              "updatedDate": "2023-08-19",
+              "franchiseeName": "신세계포인트닷컴", 
+              "addDetailDesc": "[APP] 럭키룰렛 포인트 지급",  
+              "receiptNumber" : null,
+              "messageOnOff" : "OFF",
+              "giftType": "", 
+              "giftName": "",        
+              "giftSenderId": "",
+              "giftId" : "" 
+          },
+          {
+            "point_id" : 9,
+            "point": 1,
+            "used" : "적립",
+            "pointType" :  "이벤트", 
+            "createdDate": "2023-08-19",
+            "updatedDate": "2023-08-19",
+            "franchiseeName": "신세계포인트닷컴", 
+            "addDetailDesc": "[APP] 광고보고 적립 포인트 지급",  
+            "receiptNumber" : null,
+            "messageOnOff" : "OFF",
+            "giftType": "", 
+            "giftName": "",        
+            "giftSenderId": "",
+            "giftId" : "" 
+        }
+      ]
+    },
+      "message": "정상적으로 처리 되었습니다.",
+      "status": 200
+  },
+
+  "E000000000" : [
+    {
+        "id" : 1,
+        "name" : "이마트",
+        "code" : "E200006892"
+    },
+    {
+        "id" : 2,
+        "name" : "PK마켓",
+        "code" : "E200006848"
+    },
+    {
+        "id" : 3,
+        "name" : "트레이더스",
+        "code" : "E200006846"
+    },
+    {
+        "id" : 4,
+        "name" : "노브랜드",
+        "code" : "E200006871"
+    },
+    {
+        "id" : 5,
+        "name" : "데이즈",
+        "code" : "E200006831"
+    },
+    {
+        "id" : 6,
+        "name" : "라이프컨테이너",
+        "code" : "E200028922"
+    },
+    {
+        "id" : 7,
+        "name" : "마몰로",
+        "code" : "E200028756"
+    },
+    {
+        "id" : 8,
+        "name" : "메종티시아",
+        "code" : "E200006838"
+    },
+    {
+        "id" : 9,
+        "name" : "몰리스",
+        "code" : "E200006840"
+    },
+    {
+        "id" : 10,
+        "name" : "베이비서클",
+        "code" : "E200006834"
+    },
+    {
+        "id" : 11,
+        "name" : "삐에로쑈핑",
+        "code" : "E200030460"
+    },
+    {
+        "id" : 12,
+        "name" : "센텐스",
+        "code" : "E200028752"
+    },
+    {
+        "id" : 13,
+        "name" : "쇼앤텔",
+        "code" : "E200030850"
+    },
+    {
+        "id" : 14,
+        "name" : "스톤브릭",
+        "code" : "E200032894"
+    },
+    {
+        "id" : 15,
+        "name" : "일렉트로마트",
+        "code" : "E200006844"
+    },
+    {
+        "id" : 16,
+        "name" : "토이킹덤",
+        "code" : "E200006836"
+    },
+    {
+        "id" : 17,
+        "name" : "토이킹덤플레이",
+        "code" : "E200028730"
+    },
+    {
+        "id" : 18,
+        "name" : "하우디",
+        "code" : "E200028736"
+    },
+    {
+        "id" : 19,
+        "name" : "피코크",
+        "code" : "E200030894"
+    }],
+  "D000000000" : [
+    {
+        "id" : 1,
+        "name" : "백화점",
+        "code" : "D000110089"
+    },
+    {
+        "id" : 2,
+        "name" : "분더샵",
+        "code" : "D100001687"
+    },
+    {
+        "id" : 3,
+        "name" : "시코르",
+        "code" : "D200028836"
+    },
+    {
+        "id" : 4,
+        "name" : "스타일마켓",
+        "code" : "D100001527"
+    },
+    {
+        "id" : 5,
+        "name" : "팩토리스토어",
+        "code" : "D200028834"
+    },
+    {
+        "id" : 6,
+        "name" : "SSG푸드마켓(패션편집샵)",
+        "code" : "D200005451"
+    }], 
+    
+  "E000000001" :[
+    {
+      "id" : 1,
+      "name" : "에브리데이",
+      "code" : "E000000004"
+    }], 
+  
+  "E200006892" :[
+    {
+      "id" : 1234,
+      "name" : "이마트 동탄점"
+    },
+    {
+      "id" : 2,
+      "name" : "이마트 명일점"
+    }
+  ]
+
+}

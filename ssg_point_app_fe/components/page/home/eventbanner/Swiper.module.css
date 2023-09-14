@@ -1,0 +1,91 @@
+#app {
+    height: 100%;
+}
+
+.html,
+.body {
+    position: relative;
+    height: 100%;
+}
+
+.body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%; 
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.main_banner_cnt .swiper_control {
+    bottom: 21px;
+}
+.pagination_control {
+    color: #000;
+    font-size: 12px;
+    letter-spacing: -1.5px;
+    line-height: 14px;
+    font-family: Inter,Noto Sans KR,sans-serif;
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
+.swiper_control {
+    position: absolute;
+    right: 30px;
+    bottom: 38px;
+    z-index: 2;
+    box-sizing: border-box;
+    height: 18px;
+}
+.main_banner_box .main_banner_cnt .swiper-control {
+    position: absolute;
+    right: 30px;
+    bottom: 7px;
+    z-index: 2;
+    box-sizing: border-box;
+    height: 18px;
+}
+
+.swiper-pagination {
+    color: #000;
+    font-size: 12px;
+    letter-spacing: -1.5px;
+    line-height: 14px;
+    font-family: Inter,Noto Sans KR,sans-serif;
+    display: block;
+    width: 100%;
+    text-align: right;
+}
+
+.swiper-pagination span {
+  padding: 0px 3px;
+}
+
+.swiper-pagination-current {
+    color: #000;
+    font-weight: 700;
+}

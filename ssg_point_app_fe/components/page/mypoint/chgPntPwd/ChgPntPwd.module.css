@@ -1,0 +1,85 @@
+.cnt_box0 {
+    padding: 0 20px 40px;
+}
+.form_box_required{
+    padding-bottom: 16px;
+}
+.form_box_required .tit {
+    padding-bottom: 8px;
+    font-size: 13px;
+    line-height: 21px;
+}
+.input_box {
+    position: relative;
+}
+.input_box input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border: 1px solid #e8e8e8;
+    font-size: 14px;
+    border-radius: 8px;
+}
+.input_box input {
+    height: 48px;
+    padding: 0 16px;
+    background: #fff;
+    z-index: 2;
+}
+.input_box label {
+    position: absolute;
+    display: table;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #767676;
+    vertical-align: middle;
+}
+.input_box label .in_box {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    word-break: keep-all;
+    color: #767676;
+}
+.btn_box {
+    margin-top: 35px;
+}
+.btn_box {
+    display: block;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.btn_primary {
+    padding: 12px 16px!important;
+    background: linear-gradient(110deg,#f40000 -5.78%,#ff8a00 17.06%,#f8b404 33.44%,#f9ad05 48.81%,#ff8a00 64.68%,#b258cb 85.01%,#00c4b4 103.04%);
+    color: #000;
+    font-weight: 500;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    height: 48px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+.form_box_required .tit:after {
+    content: "*";
+    display: inline-block;
+    color: #eb0000;
+    margin-left: 3px;
+}

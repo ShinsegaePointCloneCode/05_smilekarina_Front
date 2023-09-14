@@ -1,0 +1,36 @@
+.main_menu {
+    margin: -24px 20px 24px;
+    height: 88px;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+    border-radius: 8px
+}
+
+.main_menu ul {
+    font-size: 0;
+    box-sizing: border-box;
+    padding: 10px 19px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+.main_menu a {
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    color: #505050
+}
+
+.main_menu img {
+    display: block;
+    width: 45px;
+    margin: 0 auto
+}
