@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './PntGiftMainsub.module.css'
 import { OtherUserInfo } from './PntGiftContent'
-import { maskingID, maskingName } from '../PointHistoryDetail'
+import { maskingID, maskingName } from '../PntHistoryShow'
 
 export default function PntGiftsubCheckUser({otherUserInfo}:{otherUserInfo:OtherUserInfo}) {
   return (
