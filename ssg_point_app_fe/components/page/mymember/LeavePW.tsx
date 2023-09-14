@@ -17,7 +17,7 @@ export default function LeavePW() {
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPw(e.target.value);
-        console.log(pw);
+        //console.log(pw);
     }
 
     const checkPw = async () => {

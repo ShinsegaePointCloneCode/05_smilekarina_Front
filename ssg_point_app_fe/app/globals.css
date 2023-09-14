@@ -13,10 +13,10 @@
 
 }
 
-html[data-theme='dark-mode'] {
-  background-color: #000 !important;
+/* html[data-theme='dark-mode'] {
+  background-color: #007aff !important;
   color: #fff !important;
-}
+} */
 html[data-theme='dark-mode'],
 html[data-theme='dark-mode'] body,
 html[data-theme='dark-mode'] h1, 
@@ -31,7 +31,7 @@ html[data-theme='dark-mode'] li,
 html[data-theme='dark-mode'] button, 
 html[data-theme='dark-mode'] span, 
 html[data-theme='dark-mode'] div {
-  background-color: #000 !important;
+  background-color: #152322 !important;
   color: #fff !important;
 }
 
@@ -485,4 +485,20 @@ padding: 0px 3px;
 
 .txt_line0.pk:after {
   background: #fed6e8;
+}
+
+
+
+.regular_reg01 {
+  padding: 40px 20px;
+}
+.sp_tit1 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 400;
+  word-break: keep-all;
+  letter-spacing: -.5px;
+}
+.sp_tit1 strong {
+  font-weight: 500;
 }

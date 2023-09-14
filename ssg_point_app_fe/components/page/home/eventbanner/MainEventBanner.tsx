@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react'
 import { EventBannerType } from '@/types/eventBannerDataType'
 import SwiperComponent from './Swiper';
+import { EventBannerData } from '@/datas/EventBannerData';
 
 
 export default function EventBanner() {
@@ -11,15 +12,7 @@ export default function EventBanner() {
   const [eventList, setEventList] = useState<EventBannerType[]>([])
 
   useEffect(() => {
-    const getEvent = async () => await fetch('http://localhost:9999/eventbanner', { next: { revalidate: 3600 } })
-      .then(response => response.json())
-      .then(data => {
-        
-        setEventList(data)
-
-      }
-      )
-    getEvent()
+    setEventList(EventBannerData)
   }, [])
 
   return (

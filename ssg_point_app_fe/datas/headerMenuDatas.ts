@@ -207,4 +207,9 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 혜택",
         url: "/benefits/pntTip"
     },
+    {
+        id: 42,
+        name: "마이 라운지",
+        url: "/mylounge/regularstore"
+    },
 ];

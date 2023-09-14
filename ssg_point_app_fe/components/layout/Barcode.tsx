@@ -54,7 +54,7 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
                 }
                 
                 const data = await response.json();
-                console.log(data.result.cardNumber);
+                //console.log(data.result.cardNumber);
                 setBarcode(data.result.cardNumber);
 
             } catch (error) {

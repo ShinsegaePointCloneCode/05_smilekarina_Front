@@ -74,7 +74,7 @@ export default function SingUpSuccess() {
                 Dm={signUpResult.Dm}
                 Tm={signUpResult.Tm}
             />
-            <GroupJoinArea />
+            <GroupJoinArea name={signUpResult.name}/>
         </div>
     )
 }

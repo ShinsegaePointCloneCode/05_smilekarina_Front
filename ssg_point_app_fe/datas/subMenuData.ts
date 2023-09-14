@@ -129,7 +129,7 @@ export const myloungeMenuData: MenuType[] = [
     {
         id: 5,
         name: "자주 찾는 매장",
-        url: "/serviceAgree"
+        url: "/mylounge/regularstore"
     },
 ];
 export const mybenefitMenuData: MenuType[] = [

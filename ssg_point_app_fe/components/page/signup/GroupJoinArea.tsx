@@ -5,19 +5,22 @@ import styles from './GroupJoinArea.module.css'
 import Image from 'next/image'
 import Link from 'next/link';
 
-export default function GroupJoinArea() {
+export default function GroupJoinArea(props: { name?: string }) {
 
     const [isContentHidden, setContentHidden] = useState(true); // 내용을 기본적으로 숨깁니다.
 
     const toggleContentVisibility = () => {
         setContentHidden(!isContentHidden);
     };
+    const maskSecondCharacter = (str: string) => {
+        return str[0] + '*' + str.slice(2);
+    }
 
     return (
         <div>
             <div className={styles.group_join_box}>
                 <p className={styles.top_tit}>
-                    <strong>박*우</strong>
+                    <strong>{props.name && maskSecondCharacter(props.name)}</strong>
                     님,
                     <br />
                     통합 ID로 더 다양한 서비스를

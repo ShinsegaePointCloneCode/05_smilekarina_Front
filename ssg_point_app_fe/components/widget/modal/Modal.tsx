@@ -17,7 +17,7 @@ type PublicModalProps = {
 export default function PublicModal({ isOpen, onOpenChange, content, routePath, token }: PublicModalProps) {
     const router = useRouter();
     const pathname = usePathname();
-    
+
     return (
         <>
 
@@ -39,11 +39,14 @@ export default function PublicModal({ isOpen, onOpenChange, content, routePath, 
 
                                 <Button color="primary" onPress={() => {
                                     if (pathname === "/withdrawal/leaveOnline") {
-                                        withdrawal({token});
+                                        withdrawal({ token });
                                     }
                                     onClose();
                                     if (routePath) {
                                         router.push(routePath);
+                                    }
+                                    if (pathname === "/benefits/pntPlus/roulette") {
+                                        window.location.reload(); 
                                     }
                                 }}>
                                     확인

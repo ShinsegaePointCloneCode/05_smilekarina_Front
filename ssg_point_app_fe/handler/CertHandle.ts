@@ -14,11 +14,19 @@ export const handleOnChange = (
   certData: CertFormDataType,
   setCertData: React.Dispatch<React.SetStateAction<CertFormDataType>>
 ) => {
-  const { name, value } = e.target;
-  setCertData({
-    ...certData,
-    [name]: value
-  });
+  const { name, value, type, checked } = e.target;
+  if (type === "checkbox") {
+    setCertData({
+      ...certData,
+      [name]: checked
+    });
+  } else{
+    setCertData({
+      ...certData,
+      [name]: value
+    });
+  }
+  
 }
 
 export const handleLocalStorage = (name: String, phone: String) => {
@@ -62,7 +70,7 @@ export const checkIdAdrr = async (name: String, phone: String) => {
     if (data.success) {
       return data.result
     } else {
-      console.log("a")
+      
       return undefined;
     }
   } catch (error) {
