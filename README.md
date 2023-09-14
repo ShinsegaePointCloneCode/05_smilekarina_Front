@@ -28,11 +28,11 @@
 ## ✨ 기능 및 화면
 ### 1) 메인 화면
 ### Frontend  
-<div align="space-between">  
+<p float="left"> 
   <img src="https://github.com/ShinsegaePointCloneCode/Back/blob/develop/exec/captureImg/1.png" width="200" height="400"/>
   <img src="https://github.com/ShinsegaePointCloneCode/Back/blob/develop/exec/captureImg/4.png" width="200" height="400"/>
   <img src="https://github.com/ShinsegaePointCloneCode/Back/blob/develop/exec/captureImg/5.png" width="200" height="400"/>
-</div>
+</p>
 
 - 모든 서비스를 접근 할수 있는 페이지 입니다.
 <br>
