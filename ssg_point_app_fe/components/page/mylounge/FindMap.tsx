@@ -124,7 +124,7 @@ export default function FindMap() {
                 .then(data => {
                     if (data.success) {
                         setMalls(data.result);
-                        console.log("Store data fetched:", data);
+                        // console.log("Store data fetched:", data);
                     } else {
                         console.error("Failed to fetch store data:", data);
                     }

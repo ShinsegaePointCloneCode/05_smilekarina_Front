@@ -14,34 +14,7 @@ export default function LeaveInfo() {
     const [sendToken, setSendToken] = useState<string>("");
     const session = useSession()
 
-    // const withdrawal = async () => {
-    //     if (!session.data?.user.token) {
-    //         console.error("Token is not provided.");
-    //         return;
-    //     }
-    //     try{
-    
-    //         const response = await fetch("https://smilekarina.duckdns.org/api/v1/withdrawal", {
-    //                 method: 'PUT',
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Authorization': `Bearer ${session.data?.user.token}`
-    //                 },                    
-    //             })
-    //         const data = await response.json();
-    //         if (data.success) {
-    //             console.log("Withdrawal success.");
-    //             signOut({ callbackUrl: '/' })
-                
-    //         } else {
-                
-    //         }
-    
-    //     } catch(e) {
-    //         console.log(e);
-    //     }
-    // };
-
+   
     const checkWithdrawal = async () => {
         setModalContent('정말로 탈퇴하시겠습니까?');
         setSendToken(session.data?.user.token);

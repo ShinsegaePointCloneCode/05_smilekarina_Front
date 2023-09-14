@@ -20,7 +20,7 @@ export default function SnsLogin() {
             redirect: true,
             callbackUrl: callBackUrl ? callBackUrl : '/'
         })
-        console.log(result);
+        
 
 
 

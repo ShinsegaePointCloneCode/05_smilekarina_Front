@@ -46,7 +46,7 @@ export default function PwResult() {
             ),
         });
         const data = await res.json();
-        console.log(data.success);
+        
         if (data.success === true) {
             setModalContent("비밀번호가 변경되었습니다.");
             setRoutePath("/login");

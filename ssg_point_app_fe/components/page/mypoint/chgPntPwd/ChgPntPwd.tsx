@@ -15,7 +15,6 @@ export default function ChgPntPwd() {
 
     const session = useSession();
     const token = session.data?.user.token
-
     const router = useRouter();
 
     const [passwordInput, setPasswordInput] = useState<passType>({

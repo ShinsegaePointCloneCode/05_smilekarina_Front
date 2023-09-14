@@ -42,7 +42,7 @@ export default function Roulette() {
         }
 
         setRouletteResult(result);
-        console.log("Result:", result);
+        
 
         // 서버에 결과 전송
         try {
@@ -72,7 +72,7 @@ export default function Roulette() {
             } else {
                 // Handle unsuccessful responses if needed
             }
-            console.log('Server Response:', data);
+            
         } catch (error) {
             console.error('There was a problem with the fetch operation:');
             setModalContent(`오류입니다.`);

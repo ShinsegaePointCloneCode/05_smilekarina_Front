@@ -40,10 +40,10 @@ export const options: NextAuthOptions = {
 
 
                 if (res.ok && user) {
-                    //console.log(user.result.token)
+                    
                     return user.result
                 }
-                console.log(user)
+                
 
                 // Return null if user data could not be retrieved
                 return null
@@ -89,7 +89,7 @@ export const options: NextAuthOptions = {
                         (user as any).token = userInfo.result.token;
                         (user as any).uuid = userInfo.result.uuid;
                     }
-                    console.log(account);
+                    
 
 
                 } catch (e) {
@@ -106,7 +106,7 @@ export const options: NextAuthOptions = {
 
 
         async jwt({ token, user }) {
-            //console.log(user)
+            
             return { ...token, ...user };
         },
 
