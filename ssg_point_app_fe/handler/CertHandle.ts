@@ -70,7 +70,7 @@ export const checkIdAdrr = async (name: String, phone: String) => {
     if (data.success) {
       return data.result
     } else {
-      console.log("a")
+      
       return undefined;
     }
   } catch (error) {

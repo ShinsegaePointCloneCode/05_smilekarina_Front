@@ -11,7 +11,7 @@ export async function GET(request: Request) {
     const url = new URL(request.url || "");
     const queryParams = Object.fromEntries(url.searchParams.entries());
     
-    console.log("Query Parameters:", queryParams);
+    // console.log("Query Parameters:", queryParams);
 
     return NextResponse.json({ queryParams });
 }

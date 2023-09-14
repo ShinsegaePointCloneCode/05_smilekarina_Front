@@ -16,7 +16,7 @@ export const withdrawal = async (props: {token?: string}) => {
             })
         const data = await response.json();
         if (data.success) {
-            console.log("Withdrawal success.");
+            //console.log("Withdrawal success.");
             signOut({ callbackUrl: '/' })
             
         } 

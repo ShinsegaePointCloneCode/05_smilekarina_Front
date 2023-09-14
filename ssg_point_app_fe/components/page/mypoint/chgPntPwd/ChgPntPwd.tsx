@@ -22,7 +22,7 @@ export default function ChgPntPwd() {
     const token = session.data?.user.token
     const PointPwChHandler = (e: any) => {
         e.preventDefault();
-        console.log(PointPw1, PointPw2)
+        //console.log(PointPw1, PointPw2)
         if (PointPw1 === PointPw2) {
             setPointlastPw(PointPw1)
         } else {

@@ -80,7 +80,7 @@ export default function FindRegion() {
             const data = await response.json();
     
             if (data.success) {
-                console.log(data.result.content);
+                // console.log(data.result.content);
             } else {
                 // Handle unsuccessful responses if needed
             }
