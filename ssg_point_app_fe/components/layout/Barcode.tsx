@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Barcode.module.css'
 import { useBarcode } from 'next-barcode';
 import GetUsablePoint from './GetUsablePoint';
+import Link from 'next/link';
 
 
 
@@ -91,8 +92,8 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
                                         </div>
                                     </div>
                                     <div className={`${styles.txt_link_box}`}>
-                                        <a href="" className={`${styles.txt_link_btn} ${styles.bk}`}>포인트 비밀번호 변경</a>
-                                        <a href="" className={`${styles.txt_link_btn} ${styles.bk}`}>스마트 영수증</a>
+                                        <Link href="/mypoint/chgPntPwdCert" className={`${styles.txt_link_btn} ${styles.bk}`}>포인트 비밀번호 변경</Link>
+                                        <Link href="/mypoint/savePoint" className={`${styles.txt_link_btn} ${styles.bk}`}>스마트 영수증</Link>
                                     </div>
                                 </div>
                             </li>
