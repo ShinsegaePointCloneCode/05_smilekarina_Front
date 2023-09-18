@@ -11,7 +11,7 @@ export const EventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_1.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3340&tabActiveIdx=0"
+        "event_url": "/"
     },
     {
         "id": 2,
@@ -23,7 +23,7 @@ export const EventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_2.jpg",
         "event_partner_id": "204",
         "event_type": "응모형",
-        "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3147"
+        "event_url": "/"
     },
     {
         "id": 3,
@@ -35,7 +35,7 @@ export const EventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_3.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3406&tabActiveIdx=0"
+        "event_url": "/"
     },
     {
         "id": 4,
@@ -47,7 +47,7 @@ export const EventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_4.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/membership/combine"
+        "event_url": "/"
     },
     {
         "id": 5,
@@ -59,7 +59,7 @@ export const EventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_5.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=2251"
+        "event_url": "/"
     },
     {
         "id": 6,
@@ -71,7 +71,7 @@ export const EventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_6.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/cscenter/notice/detail?boardNo=241&pageNo=1"
+        "event_url": "/"
     }
 ]
 
@@ -86,7 +86,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_7.png",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/endevents/detail?eventNo=3472"
+        "event_url": "/"
       },
       {
         "id": 2,
@@ -98,7 +98,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_8.jpg",
         "event_partner_id": "204",
         "event_type": "응모형",
-        "event_url": "https://m.shinsegaepoint.com/couponPage"
+        "event_url": ""
       },
       {
         "id": 3,
@@ -110,7 +110,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_9.png",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/couponPage"
+        "event_url": ""
       },
       {
         "id": 4,
@@ -122,7 +122,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_10.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3046"
+        "event_url": "/"
       },
       {
         "id": 5,
@@ -134,7 +134,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_11.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=2383&tabActiveIdx=0"
+        "event_url": "/"
       },
       {
         "id": 6,
@@ -146,7 +146,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_12.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/membership/club/momkids"
+        "event_url": "/"
       },{
         "id": 7,
         "eventId": 30444,
@@ -157,7 +157,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_13.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/membership/club/parking"
+        "event_url": "/"
       },
       {
         "id": 8,
@@ -169,7 +169,7 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_14.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://m.shinsegaepoint.com/membership/club/beauty"
+        "event_url": "/"
       },
       {
         "id": 9,
@@ -181,6 +181,6 @@ export const SubEventBannerData: EventBannerType[] = [
         "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_15.jpg",
         "event_partner_id": "200",
         "event_type": "단순연결",
-        "event_url": "https://www.shinsegaegroupnewsroom.com/category/newsletter/"
+        "event_url": "/"
       }
 ]
