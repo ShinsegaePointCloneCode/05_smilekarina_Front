@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import styles from './SideContents.module.css'
 import Logo from '@/components/ui/header/Logo'
 import { signOut, useSession } from 'next-auth/react'
@@ -11,6 +13,11 @@ import SnsLogin from '@/components/page/login/SnsLogin'
 
 
 export default function SideContents() {
+  const [isSidebarOpen, setSidebarOpen] = useState(true); // 사이드바의 상태 관리
+
+    const closeSidebar = () => {
+        setSidebarOpen(false); // 사이드바를 닫는 함수
+    };
   const session = useSession()
   const rogo = "/images/ssgpoint-logo.gif";
   const formatDate = dateFormat
