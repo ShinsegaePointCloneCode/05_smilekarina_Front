@@ -1,7 +1,8 @@
 import { PointType } from '@/types/PointType'
 import React from 'react'
-import style from './MyPoint.module.css'
-import { dateFormat } from './PointHistoryDetail';
+import style from './PntGift.module.css'
+import { dateFormat } from '../PointHistoryDetail';
+
 
 
 // 이름 마스킹 처리 함수
@@ -20,14 +21,14 @@ export function maskingName(name: string) {
 export function maskingID(value: string) {
     if (value.length === 2) {
         return value.replace(/(?<=.{1})./gi, '*');
-    } else if (value.length > 2) {
+style    } else if (value.length > 2) {
         return value.replace(/(?<=.{2})./gi, '*');
     } else {
         return value;
     }
 };
 
-export default function PntHistoryShow({data}:{data:PointType}) {
+export default function PntGiftHistoryShow({data}:{data:PointType}) {
 
     const date = new Date(data.showDate);
     const formdate = dateFormat({formatdate: date});
@@ -69,9 +70,7 @@ export default function PntHistoryShow({data}:{data:PointType}) {
       <p className={style.p_use_date}>{formdate}</p>
       {data.messageOnOff ? 
         <button className={style.view_btn}>메시지보기</button> :
-         data.receiptNumber !== null ?
-         <button className={style.view_btn}>영수증 보기</button> :
-          null }
+        null }
     </div>
 </li>
   )
