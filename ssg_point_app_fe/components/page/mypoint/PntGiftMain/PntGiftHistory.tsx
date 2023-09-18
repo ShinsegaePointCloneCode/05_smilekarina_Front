@@ -17,8 +17,8 @@ export default function PointHistory({ token, giftquery }: { token: string, gift
 
     useEffect(() => {
         if (!token) return
-        const getGiftPointList = (async() => {
-           await fetch(`https://smilekarina.duckdns.org/api/v1/point/pointGiftList?giftGb=${giftquery.giftGb}&page=0&size=10`, {
+        const getGiftPointList = (async () => {
+            await fetch(`https://smilekarina.duckdns.org/api/v1/point/pointGiftList?giftGb=${giftquery.giftGb}&page=0&size=20`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -34,41 +34,45 @@ export default function PointHistory({ token, giftquery }: { token: string, gift
         })
         getGiftPointList()
 
-    }, [giftquery,token])
+    }, [giftquery, token])
 
 
-// // 더미 데이터 테스트 
-// const [pointData, setPointData] = useState<PointType[]>();
+    // // 더미 데이터 테스트 
+    // const [pointData, setPointData] = useState<PointType[]>();
 
 
-// useEffect(()=>{
-//     const getData = async() => {
-//         await fetch('http://localhost:9999/pointlist')
-//         .then(res => res.json())
-//         .then(data =>{
-//             setPointData(data.result.pntList)
-//             setATotalPoint(data.result.aTotalPoint)
-//             setUTotalPoint(data.result.uTotalPoint)
-//             console.log(data)
-//             console.log(session.data? session.data.user.token: null)
-//         })
-//     }
-//     getData();
-// },[])
+    // useEffect(()=>{
+    //     const getData = async() => {
+    //         await fetch('http://localhost:9999/pointlist')
+    //         .then(res => res.json())
+    //         .then(data =>{
+    //             setPointData(data.result.pntList)
+    //             setATotalPoint(data.result.aTotalPoint)
+    //             setUTotalPoint(data.result.uTotalPoint)
+    //             console.log(data)
+    //             console.log(session.data? session.data.user.token: null)
+    //         })
+    //     }
+    //     getData();
+    // },[])
 
-return (
-    <div className={style.point_wrap}>
-        <PointHistoryTotal aTotalPoint={aTotalPoint} uTotalPoint={uTotalPoint} />
-        <ul className={style.point_history}>
-        {pointListData?.length > 0 ? (
-             pointListData.map((item: PointType) =>(
-             <PointgiftHistoryDetail data={item} token={token} giftquery={giftquery}/>
-            )) 
-            ) : (
-                <p>No data available.</p>
-            )}
+    return (
+        <div className={style.point_wrap}>
+            <PointHistoryTotal aTotalPoint={aTotalPoint} uTotalPoint={uTotalPoint} />
+            <ul className={style.point_history}>
+                {pointListData?.length > 0 ? (
+                    pointListData.map((item: PointType) => (
+                        <PointgiftHistoryDetail data={item} token={token} giftquery={giftquery} />
+                    ))
+                ) : (
+                    <div className={style.no_result_box}>
+                        <p className={style.no_txt}>
+                            포인트 내역이 없습니다.
+                        </p>
+                    </div>
+                )}
 
-        </ul>
-    </div>
-)
+            </ul>
+        </div>
+    )
 }

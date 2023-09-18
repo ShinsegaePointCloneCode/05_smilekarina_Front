@@ -252,4 +252,9 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 포인트",
         url: "/mypoint/chgPntPwd"
     },
+    {
+        id: 48,
+        name: "마이 포인트",
+        url: "/mypoint/convertPntList"
+    },
 ];
