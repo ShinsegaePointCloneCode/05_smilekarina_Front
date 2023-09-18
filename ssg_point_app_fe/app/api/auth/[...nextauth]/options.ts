@@ -90,6 +90,7 @@ export const options: NextAuthOptions = {
                         (user as any).uuid = userInfo.result.uuid;
                     }
                     
+                    
 
 
                 } catch (e) {

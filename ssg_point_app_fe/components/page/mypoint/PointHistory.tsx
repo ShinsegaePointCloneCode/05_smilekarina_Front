@@ -26,7 +26,7 @@ export default function PointHistory({ token, pointquery }: { token: string, poi
                 `&rangeEndDate=${pointquery.rangeEndDate}` +
                 `&usedType=${pointquery.usedType}` +
                 `&pointHistoryType=${pointquery.pointHistoryType}` +
-                `&page=0&size=10`, {
+                `&page=0&size=20`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,7 +73,11 @@ export default function PointHistory({ token, pointquery }: { token: string, poi
                         <PointHistoryDetail key={item.pointId} data={item} token={token} pointquery={pointquery} />
                     ))
                 ) : (
-                    <p>No data available.</p>
+                    <div className={style.no_result_box}>
+                        <p className={style.no_txt}>
+                            포인트 내역이 없습니다.
+                        </p>
+                    </div>
                 )}
             </ul>
         </div>

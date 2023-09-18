@@ -212,4 +212,49 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 라운지",
         url: "/mylounge/regularstore"
     },
+    {
+        id: 43,
+        name: "마이 포인트",
+        url: "/mypoint/pntHistory"
+    },
+    {
+        id: 44,
+        name: "마이 포인트",
+        url: "/mypoint/cardManage"
+    },
+    {
+        id: 44,
+        name: "마이 포인트",
+        url: "/mypoint/regAffiliatePntCard"
+    },
+    {
+        id: 45,
+        name: "마이 포인트",
+        url: "/mypoint/pntGiftMain"
+    },
+    {
+        id: 46,
+        name: "마이 포인트",
+        url: "/mypoint/pntGiftMainsub"
+    },
+    {
+        id: 47,
+        name: "마이 포인트",
+        url: "/mypoint/savePoint"
+    },
+    {
+        id: 48,
+        name: "마이 포인트",
+        url: "/mypoint/chgPntPwdCert"
+    },
+    {
+        id: 48,
+        name: "마이 포인트",
+        url: "/mypoint/chgPntPwd"
+    },
+    {
+        id: 48,
+        name: "마이 포인트",
+        url: "/mypoint/convertPntList"
+    },
 ];

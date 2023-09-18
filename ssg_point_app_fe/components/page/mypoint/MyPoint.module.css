@@ -414,3 +414,13 @@
 .point_wrap .gft_total>p span {
     padding: 0 8px 0 0;
 }
+.no_result_box {
+    padding: 80px 0;
+}
+.no_result_box .no_txt {
+    position: relative;
+    padding: 64px 0 0 0;
+    font-size: 13px;
+    text-align: center;
+    color: #767676;
+}

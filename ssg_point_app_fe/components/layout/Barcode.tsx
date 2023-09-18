@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Barcode.module.css'
 import { useBarcode } from 'next-barcode';
+import GetUsablePoint from './GetUsablePoint';
 
 
 
@@ -78,7 +79,9 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
                             <li className={`${styles.swiper} ${styles.slide}`}>
                                 <div className={`${styles.contents_barcode}`}>
                                     <p className={`${styles.txt}`}>SHINSEGAE POINT</p>
-                                    <p className={`${styles.point}`}>0</p>
+                                    <p className={`${styles.point}`}>
+                                        
+                                        </p>
                                     <div className={`${styles.image_barcode}`}>
                                         <div id="barcode0" className={`${styles.barcode0}`}>
                                             <div>
