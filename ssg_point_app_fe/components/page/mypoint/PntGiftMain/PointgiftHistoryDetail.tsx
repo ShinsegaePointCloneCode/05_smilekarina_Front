@@ -2,7 +2,7 @@ import { PointType } from '@/types/PointType'
 import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { GiftSortType } from './PointGiftMainList'
-import PntHistoryShow from '../PntHistoryShow'
+import PntGiftHistoryShow from './pntGiftHistoryShow'
 
 // 날짜 변경 함수
 export function dateFormat({ formatdate }: { formatdate: Date }) {
@@ -51,7 +51,7 @@ export default function PointGiftHistoryDetail({ data, token, giftquery }: { dat
   return (
     <>
       {good ? (
-        <PntHistoryShow data={loadedData} /> // Pass the loaded data to the component
+        <PntGiftHistoryShow data={loadedData} /> // Pass the loaded data to the component
       ) : null}
     </>
   );
