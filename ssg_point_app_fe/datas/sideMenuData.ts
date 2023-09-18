@@ -126,7 +126,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 포인트",
         menuName: "포인트 전환",
-        menuUrl: "/mypoint/convertPntList",
+        menuUrl: "/",
         menuIcon: "/images/sideMenu/menu_03.png"
     },
     {

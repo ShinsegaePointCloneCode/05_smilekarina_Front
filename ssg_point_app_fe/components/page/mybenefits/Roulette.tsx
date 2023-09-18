@@ -1,33 +1,37 @@
-'use client'
+'use client'  // 클라이언트에서 실행될 코드임을 명시합니다.
 
-import React, { useState, useEffect } from 'react'
-import styles from './Roulette.module.css'
-import { useDisclosure } from '@nextui-org/react';
-import PublicModal from '@/components/widget/modal/Modal';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+// 필요한 모듈들을 가져옵니다.
+import React, { useState, useEffect } from 'react'  // React 및 관련 훅을 가져옵니다.
+import styles from './Roulette.module.css'  // CSS 모듈을 가져옵니다.
+import { useDisclosure } from '@nextui-org/react';  // 모달의 표시 상태를 관리하는 훅을 가져옵니다.
+import PublicModal from '@/components/widget/modal/Modal';  // 모달 컴포넌트를 가져옵니다.
+import { useSession } from 'next-auth/react';  // 사용자 세션 정보를 가져오는 훅을 가져옵니다.
+import { useRouter } from 'next/navigation';  // 라우팅 관련 훅을 가져옵니다.
 
 export default function Roulette() {
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [modalContent, setModalContent] = useState<string>("");
-    const [rotateDegree, setRotateDegree] = useState(0);
-    const [routePath, setRoutePath] = useState<string>("");
-    const [rouletteResult, setRouletteResult] = useState<number | null>(null);
+    // 상태 변수들을 정의합니다.
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();  // 모달의 표시 상태를 관리합니다.
+    const [modalContent, setModalContent] = useState<string>("");  // 모달에 표시될 내용을 저장합니다.
+    const [rotateDegree, setRotateDegree] = useState(0);  // 룰렛의 회전 각도를 저장합니다.
+    const [routePath, setRoutePath] = useState<string>("");  // 현재 라우트 경로를 저장합니다.
+    const [rouletteResult, setRouletteResult] = useState<number | null>(null);  // 룰렛 결과를 저장합니다.
     
-    const session = useSession()
-    const router = useRouter();
+    const session = useSession()  // 현재 사용자의 세션 정보를 가져옵니다.
+    const router = useRouter();  // 라우터 객체를 가져옵니다.
 
-
+    // 룰렛을 회전시키는 함수입니다.
     const spinRoulette = async () => {
+        // 랜덤한 각도를 계산합니다.
         const randomDegree = Math.floor(Math.random() * 360);
         const totalDegree = 3600 + randomDegree;
 
-        setRotateDegree(-totalDegree);
+        setRotateDegree(-totalDegree);  // 룰렛을 회전시킵니다.
 
+        // 룰렛의 결과를 계산합니다.
         const finalDegree = (3600 + 90 - randomDegree) % 360;
         let result: number = 0;
 
-
+        // 다양한 각도 범위에 따라 결과를 결정합니다.
         if (finalDegree >= 0 && finalDegree < 60) {
             result = 1;
         } else if (finalDegree >= 60 && finalDegree < 120) {
@@ -42,47 +46,50 @@ export default function Roulette() {
             result = 10;
         }
 
-        setRouletteResult(result);
+        setRouletteResult(result);  // 결과를 상태에 저장합니다.
         
+        // 5초 후에 서버에 결과를 전송합니다.
         setTimeout(async () => {
-        // 서버에 결과 전송
-        try {
-            if (!session.data?.user.token) {
-                console.error("Token is not provided.");
-                return;
-            }
-            const response = await fetch('https://smilekarina.duckdns.org/api/v1/benefits/pntPlus/roulette', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${session.data.user.token}`
-                },
-                body: JSON.stringify({ point: result }),
-            });
+            try {
+                if (!session.data?.user.token) {
+                    console.error("Token is not provided.");
+                    return;
+                }
+                // 서버에 결과를 전송합니다.
+                const response = await fetch('https://smilekarina.duckdns.org/api/v1/benefits/pntPlus/roulette', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${session.data.user.token}`
+                    },
+                    body: JSON.stringify({ point: result }),
+                });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
 
-            const data = await response.json();
-            if (data.success) {
-                setModalContent(`${result}포인트가 적립되었습니다.`);
+                const data = await response.json();
+                if (data.success) {
+                    setModalContent(`${result}포인트가 적립되었습니다.`);
+                    setRoutePath('/benefits/pntPlus/roulette')
+                    onOpen();
+                    router.refresh()
+                } else {
+                    // 실패한 응답 처리
+                }
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:');
+                setModalContent(`오류입니다.`);
                 setRoutePath('/benefits/pntPlus/roulette')
                 onOpen();
-                router.refresh()
-            } else {
-                // Handle unsuccessful responses if needed
             }
-            
-        } catch (error) {
-            console.error('There was a problem with the fetch operation:');
-            setModalContent(`오류입니다.`);
-            setRoutePath('/benefits/pntPlus/roulette')
-            onOpen();
-            
-        }
-    }, 5000);  // 5초 뒤에 실행됩니다.
+        }, 5000);
     };
+
+
+
+
     return (
         <div>
             <div>
